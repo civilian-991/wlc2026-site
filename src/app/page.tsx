@@ -124,14 +124,14 @@ function CountdownCard({
   label: string;
 }) {
   return (
-    <div className="glass-card rounded-xl p-3 sm:p-5 md:p-6 min-w-[65px] sm:min-w-[90px] md:min-w-[110px] text-center">
+    <div className="glass-card rounded-xl p-4 sm:p-6 md:p-8 min-w-[75px] sm:min-w-[100px] md:min-w-[130px] lg:min-w-[150px] text-center">
       <div
         className="font-[family-name:var(--font-bebas)] text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-[#f7c12d] leading-none"
         style={{ fontVariantNumeric: "tabular-nums" }}
       >
         {value.toString().padStart(2, "0")}
       </div>
-      <div className="font-[family-name:var(--font-nunito)] font-medium text-[9px] sm:text-[10px] md:text-xs tracking-[0.2em] uppercase text-white/40 mt-2 sm:mt-3">
+      <div className="font-[family-name:var(--font-nunito)] font-medium text-[10px] sm:text-xs md:text-sm tracking-[0.2em] uppercase text-white/40 mt-3 sm:mt-4">
         {label}
       </div>
     </div>
@@ -167,12 +167,12 @@ export default function ComingSoon() {
       {mounted && <FloatingParticles />}
       <div className="noise-overlay" />
 
-      <main className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-12 sm:py-16 overflow-hidden">
+      <main className="relative z-10 min-h-screen flex flex-col items-center px-4 sm:px-6 py-16 sm:py-24 overflow-hidden">
         {/* Decorative top line */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#f7c12d]/30 to-transparent" />
 
         {/* Logo Section */}
-        <div className="animate-fade-in-scale text-center mb-6 sm:mb-8 relative">
+        <div className="animate-fade-in-scale text-center mb-12 sm:mb-16 md:mb-20 relative">
           {/* Glow ring behind logo */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] rounded-full bg-gradient-radial from-[#f7c12d]/10 via-transparent to-transparent blur-3xl pointer-events-none" />
 
@@ -187,7 +187,7 @@ export default function ComingSoon() {
         </div>
 
         {/* Title Section */}
-        <div className="animate-fade-in-up delay-200 text-center mb-8 sm:mb-12 max-w-3xl mx-auto">
+        <div className="animate-fade-in-up delay-200 text-center mb-16 sm:mb-20 md:mb-24 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="w-8 sm:w-12 h-[1px] bg-gradient-to-r from-transparent to-[#f7c12d]" />
             <span className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.4em] uppercase text-[#f7c12d]">
@@ -207,12 +207,12 @@ export default function ComingSoon() {
         </div>
 
         {/* Countdown Section */}
-        <div className="w-full max-w-4xl mx-auto mb-10 sm:mb-14">
-          <p className="animate-fade-in-up delay-300 font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.4em] uppercase text-[#f7c12d]/80 mb-6 sm:mb-8 text-center">
+        <div className="w-full max-w-4xl mx-auto mb-16 sm:mb-20 md:mb-24">
+          <p className="animate-fade-in-up delay-300 font-[family-name:var(--font-bebas)] text-sm sm:text-base tracking-[0.4em] uppercase text-[#f7c12d]/80 mb-8 sm:mb-10 text-center">
             Global Launch Event
           </p>
 
-          <div className="animate-fade-in-up delay-400 flex justify-center items-center gap-2 sm:gap-3 md:gap-4">
+          <div className="animate-fade-in-up delay-400 flex justify-center items-center gap-3 sm:gap-4 md:gap-5">
             <CountdownCard value={timeLeft.days} label="Days" />
             <span className="font-[family-name:var(--font-bebas)] text-xl sm:text-2xl md:text-3xl text-[#f7c12d]/20 self-center">:</span>
             <CountdownCard value={timeLeft.hours} label="Hours" />
@@ -224,7 +224,7 @@ export default function ComingSoon() {
         </div>
 
         {/* Event Info Pills */}
-        <div className="animate-fade-in-up delay-700 flex flex-wrap justify-center items-center gap-3 sm:gap-4 mb-10 sm:mb-14">
+        <div className="animate-fade-in-up delay-700 flex flex-wrap justify-center items-center gap-4 sm:gap-6 mb-16 sm:mb-20 md:mb-24">
           {[
             { icon: "location", text: "Rio de Janeiro" },
             { icon: "calendar", text: "February 2026" },
@@ -284,13 +284,13 @@ export default function ComingSoon() {
         </div>
 
         {/* Newsletter Section */}
-        <div className="animate-fade-in-up delay-800 w-full max-w-lg mx-auto mb-12 sm:mb-16 px-4">
-          <div className="divider-glow mb-8" />
+        <div className="animate-fade-in-up delay-800 w-full max-w-lg mx-auto mb-20 sm:mb-24 md:mb-32 px-4">
+          <div className="divider-glow mb-10" />
 
-          <h3 className="font-[family-name:var(--font-bebas)] text-base sm:text-lg tracking-[0.3em] uppercase text-white text-center mb-2">
+          <h3 className="font-[family-name:var(--font-bebas)] text-lg sm:text-xl md:text-2xl tracking-[0.3em] uppercase text-white text-center mb-3">
             Be The First To Know
           </h3>
-          <p className="font-[family-name:var(--font-nunito)] text-xs sm:text-sm text-white/40 text-center mb-6">
+          <p className="font-[family-name:var(--font-nunito)] text-sm sm:text-base text-white/40 text-center mb-8">
             Get exclusive updates and early access
           </p>
 
@@ -320,25 +320,25 @@ export default function ComingSoon() {
         </div>
 
         {/* Footer / Partners */}
-        <footer className="animate-fade-in-up delay-900 text-center mt-auto w-full">
-          <p className="font-[family-name:var(--font-bebas)] text-[10px] sm:text-xs tracking-[0.4em] uppercase text-white/30 mb-4 sm:mb-6">
+        <footer className="animate-fade-in-up delay-900 text-center mt-auto w-full pt-8 sm:pt-12">
+          <p className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.4em] uppercase text-white/30 mb-6 sm:mb-8">
             In Partnership With
           </p>
 
-          <div className="flex justify-center items-center gap-4 sm:gap-8 md:gap-12 flex-wrap mb-8 sm:mb-10 px-4">
+          <div className="flex justify-center items-center gap-6 sm:gap-10 md:gap-14 flex-wrap mb-12 sm:mb-16 px-4">
             {partners.map((partner, i) => (
               <span
                 key={partner.name}
-                className="font-[family-name:var(--font-nunito)] font-medium text-[10px] sm:text-xs tracking-[0.05em] text-white/30 uppercase hover:text-[#f7c12d]/60 transition-colors duration-300 cursor-default"
+                className="font-[family-name:var(--font-nunito)] font-medium text-xs sm:text-sm tracking-[0.05em] text-white/30 uppercase hover:text-[#f7c12d]/60 transition-colors duration-300 cursor-default"
               >
                 {partner.name}
               </span>
             ))}
           </div>
 
-          <div className="divider-glow mb-6" />
+          <div className="divider-glow mb-8" />
 
-          <p className="font-[family-name:var(--font-nunito)] font-light text-[10px] sm:text-xs tracking-[0.15em] text-white/20 pb-6">
+          <p className="font-[family-name:var(--font-nunito)] font-light text-xs sm:text-sm tracking-[0.15em] text-white/20 pb-8 sm:pb-12">
             &copy; 2026 World Legends Cup. All Rights Reserved.
           </p>
         </footer>
