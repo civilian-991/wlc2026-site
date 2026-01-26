@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 // Partner logos from invitation
 const partners = [
-  { name: "Quality of Life Program", nameAr: "برنامج جودة الحياة" },
+  { name: "Quality of Life Program" },
   { name: "CUFA" },
   { name: "Van Wagner" },
   { name: "Prefeitura Rio" },
@@ -31,7 +31,9 @@ function useCountdown() {
       if (distance > 0) {
         setTimeLeft({
           days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          hours: Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          ),
           minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((distance % (1000 * 60)) / 1000),
         });
@@ -46,27 +48,93 @@ function useCountdown() {
   return timeLeft;
 }
 
-function CountdownUnit({ value, label }: { value: number; label: string }) {
+// Animated stars background
+function StarField() {
+  const stars = useMemo(() => {
+    return Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      duration: `${2 + Math.random() * 4}s`,
+      delay: `${Math.random() * 5}s`,
+    }));
+  }, []);
+
   return (
-    <div className="text-center min-w-[60px] sm:min-w-[80px]">
-      <div
-        className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl md:text-7xl text-white leading-none"
-        style={{ fontVariantNumeric: "tabular-nums" }}
-      >
-        {value.toString().padStart(2, "0")}
-      </div>
-      <div className="font-[family-name:var(--font-nunito)] font-normal text-[10px] sm:text-xs tracking-[0.2em] uppercase text-[#8a8a8a] mt-1 sm:mt-2">
-        {label}
-      </div>
+    <div className="stars-container">
+      {stars.map((star) => (
+        <div
+          key={star.id}
+          className="star"
+          style={
+            {
+              left: star.left,
+              top: star.top,
+              "--duration": star.duration,
+              "--delay": star.delay,
+            } as React.CSSProperties
+          }
+        />
+      ))}
     </div>
   );
 }
 
-function CountdownSeparator() {
+// Floating particles
+function FloatingParticles() {
+  const particles = useMemo(() => {
+    return Array.from({ length: 15 }, (_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      bottom: `-20px`,
+      duration: `${15 + Math.random() * 20}s`,
+      delay: `${Math.random() * 10}s`,
+      size: `${2 + Math.random() * 4}px`,
+    }));
+  }, []);
+
   return (
-    <span className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl md:text-5xl text-[#f7c12d] opacity-40 self-start mt-0.5 hidden sm:block">
-      :
-    </span>
+    <div className="stars-container">
+      {particles.map((p) => (
+        <div
+          key={p.id}
+          className="particle"
+          style={
+            {
+              left: p.left,
+              bottom: p.bottom,
+              width: p.size,
+              height: p.size,
+              "--float-duration": p.duration,
+              "--float-delay": p.delay,
+            } as React.CSSProperties
+          }
+        />
+      ))}
+    </div>
+  );
+}
+
+// Countdown card component
+function CountdownCard({
+  value,
+  label,
+}: {
+  value: number;
+  label: string;
+}) {
+  return (
+    <div className="glass-card rounded-xl p-3 sm:p-5 md:p-6 min-w-[65px] sm:min-w-[90px] md:min-w-[110px] text-center">
+      <div
+        className="font-[family-name:var(--font-bebas)] text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-[#f7c12d] leading-none"
+        style={{ fontVariantNumeric: "tabular-nums" }}
+      >
+        {value.toString().padStart(2, "0")}
+      </div>
+      <div className="font-[family-name:var(--font-nunito)] font-medium text-[9px] sm:text-[10px] md:text-xs tracking-[0.2em] uppercase text-white/40 mt-2 sm:mt-3">
+        {label}
+      </div>
+    </div>
   );
 }
 
@@ -74,6 +142,11 @@ export default function ComingSoon() {
   const timeLeft = useCountdown();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,156 +160,191 @@ export default function ComingSoon() {
   return (
     <>
       {/* Background layers */}
+      <div className="bg-spotlight" />
       <div className="bg-pattern" />
-      <div className="bg-gradient" />
+      <div className="golden-rays" />
+      {mounted && <StarField />}
+      {mounted && <FloatingParticles />}
+      <div className="noise-overlay" />
 
-      <main className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 py-16">
-        {/* Logo */}
-        <div className="animate-fade-in-up text-center mb-8 sm:mb-10">
+      <main className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-12 sm:py-16 overflow-hidden">
+        {/* Decorative top line */}
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#f7c12d]/30 to-transparent" />
+
+        {/* Logo Section */}
+        <div className="animate-fade-in-scale text-center mb-6 sm:mb-8 relative">
+          {/* Glow ring behind logo */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] rounded-full bg-gradient-radial from-[#f7c12d]/10 via-transparent to-transparent blur-3xl pointer-events-none" />
+
           <Image
             src="/images/wlc_logo_official.png"
             alt="World Legends Cup 2026"
-            width={280}
-            height={400}
-            className="w-[180px] sm:w-[220px] md:w-[280px] h-auto animate-pulse-glow"
+            width={400}
+            height={500}
+            className="w-[200px] sm:w-[280px] md:w-[340px] lg:w-[400px] h-auto animate-pulse-glow relative z-10"
             priority
           />
         </div>
 
-        {/* Accent Bar */}
-        <div className="animate-fade-in-up delay-100 w-[60px] h-1 bg-[#f7c12d] mb-8" />
-
-        {/* Coming Soon Badge */}
-        <div className="animate-fade-in-up delay-200 text-center mb-10">
-          <div className="inline-block font-[family-name:var(--font-bebas)] text-sm tracking-[0.3em] uppercase text-[#070808] bg-[#f7c12d] px-7 py-2.5 mb-6">
-            Coming Soon
+        {/* Title Section */}
+        <div className="animate-fade-in-up delay-200 text-center mb-8 sm:mb-12 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="w-8 sm:w-12 h-[1px] bg-gradient-to-r from-transparent to-[#f7c12d]" />
+            <span className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.4em] uppercase text-[#f7c12d]">
+              Brazil 2026
+            </span>
+            <span className="w-8 sm:w-12 h-[1px] bg-gradient-to-l from-transparent to-[#f7c12d]" />
           </div>
-          <p className="font-[family-name:var(--font-nunito)] font-light text-base sm:text-lg text-white/80 max-w-md mx-auto leading-relaxed">
+
+          <h1 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.15em] uppercase text-white mb-4 leading-tight">
+            The Legends <span className="gold-text">Return</span>
+          </h1>
+
+          <p className="font-[family-name:var(--font-nunito)] font-light text-sm sm:text-base md:text-lg text-white/60 max-w-xl mx-auto leading-relaxed px-4">
             The first-of-its-kind knockout tournament bringing together football
-            legends from around the globe.
+            legends from around the globe. Where legacy meets glory.
           </p>
         </div>
 
-        {/* Countdown */}
-        <div className="animate-fade-in-up delay-300 text-center mb-10 sm:mb-12">
-          <p className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.35em] uppercase text-[#f7c12d] mb-5">
+        {/* Countdown Section */}
+        <div className="w-full max-w-4xl mx-auto mb-10 sm:mb-14">
+          <p className="animate-fade-in-up delay-300 font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.4em] uppercase text-[#f7c12d]/80 mb-6 sm:mb-8 text-center">
             Global Launch Event
           </p>
-          <div className="flex justify-center items-start gap-4 sm:gap-6 md:gap-10">
-            <CountdownUnit value={timeLeft.days} label="Days" />
-            <CountdownSeparator />
-            <CountdownUnit value={timeLeft.hours} label="Hours" />
-            <CountdownSeparator />
-            <CountdownUnit value={timeLeft.minutes} label="Minutes" />
-            <CountdownSeparator />
-            <CountdownUnit value={timeLeft.seconds} label="Seconds" />
+
+          <div className="animate-fade-in-up delay-400 flex justify-center items-center gap-2 sm:gap-3 md:gap-4">
+            <CountdownCard value={timeLeft.days} label="Days" />
+            <span className="font-[family-name:var(--font-bebas)] text-xl sm:text-2xl md:text-3xl text-[#f7c12d]/20 self-center">:</span>
+            <CountdownCard value={timeLeft.hours} label="Hours" />
+            <span className="font-[family-name:var(--font-bebas)] text-xl sm:text-2xl md:text-3xl text-[#f7c12d]/20 self-center">:</span>
+            <CountdownCard value={timeLeft.minutes} label="Min" />
+            <span className="font-[family-name:var(--font-bebas)] text-xl sm:text-2xl md:text-3xl text-[#f7c12d]/20 self-center">:</span>
+            <CountdownCard value={timeLeft.seconds} label="Sec" />
           </div>
         </div>
 
-        {/* Event Info */}
-        <div className="animate-fade-in-up delay-400 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-7 py-6 border-t border-b border-[#f7c12d]/15 mb-10 sm:mb-12">
-          <div className="flex items-center gap-2.5">
-            <svg
-              className="w-[18px] h-[18px] text-[#f7c12d]"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
+        {/* Event Info Pills */}
+        <div className="animate-fade-in-up delay-700 flex flex-wrap justify-center items-center gap-3 sm:gap-4 mb-10 sm:mb-14">
+          {[
+            { icon: "location", text: "Rio de Janeiro" },
+            { icon: "calendar", text: "February 2026" },
+            { icon: "trophy", text: "8 Nations" },
+          ].map((item, i) => (
+            <div
+              key={item.text}
+              className="glass-card rounded-full px-4 sm:px-6 py-2 sm:py-3 flex items-center gap-2 sm:gap-3 hover:border-[#f7c12d]/40 transition-colors duration-300"
             >
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            <span className="font-[family-name:var(--font-bebas)] text-sm tracking-[0.12em] uppercase text-white">
-              Rio de Janeiro, Brazil
-            </span>
-          </div>
-
-          <div className="hidden sm:block w-1 h-1 rounded-full bg-[#f7c12d]" />
-
-          <div className="flex items-center gap-2.5">
-            <svg
-              className="w-[18px] h-[18px] text-[#f7c12d]"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <rect x="3" y="4" width="18" height="18" rx="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-            <span className="font-[family-name:var(--font-bebas)] text-sm tracking-[0.12em] uppercase text-white">
-              February 2026
-            </span>
-          </div>
-
-          <div className="hidden sm:block w-1 h-1 rounded-full bg-[#f7c12d]" />
-
-          <div className="flex items-center gap-2.5">
-            <svg
-              className="w-[18px] h-[18px] text-[#f7c12d]"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
-            </svg>
-            <span className="font-[family-name:var(--font-bebas)] text-sm tracking-[0.12em] uppercase text-white">
-              World Class Legends
-            </span>
-          </div>
+              {item.icon === "location" && (
+                <svg
+                  className="w-4 h-4 text-[#f7c12d]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              )}
+              {item.icon === "calendar" && (
+                <svg
+                  className="w-4 h-4 text-[#f7c12d]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+              )}
+              {item.icon === "trophy" && (
+                <svg
+                  className="w-4 h-4 text-[#f7c12d]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                >
+                  <path d="M6 9H4.5a2.5 2.5 0 010-5H6" />
+                  <path d="M18 9h1.5a2.5 2.5 0 000-5H18" />
+                  <path d="M4 22h16" />
+                  <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+                  <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+                  <path d="M18 2H6v7a6 6 0 0012 0V2z" />
+                </svg>
+              )}
+              <span className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.1em] uppercase text-white/90">
+                {item.text}
+              </span>
+            </div>
+          ))}
         </div>
 
-        {/* Newsletter */}
-        <div className="animate-fade-in-up delay-500 text-center w-full max-w-md mb-14">
-          <h3 className="font-[family-name:var(--font-bebas)] text-sm tracking-[0.3em] uppercase text-white mb-5">
+        {/* Newsletter Section */}
+        <div className="animate-fade-in-up delay-800 w-full max-w-lg mx-auto mb-12 sm:mb-16 px-4">
+          <div className="divider-glow mb-8" />
+
+          <h3 className="font-[family-name:var(--font-bebas)] text-base sm:text-lg tracking-[0.3em] uppercase text-white text-center mb-2">
             Be The First To Know
           </h3>
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              required
-              className="flex-1 px-5 py-3.5 font-[family-name:var(--font-nunito)] text-sm bg-white/5 border border-[#f7c12d]/20 sm:border-r-0 text-white placeholder:text-[#8a8a8a] focus:bg-white/10 focus:border-[#f7c12d] transition-all duration-300"
-            />
-            <button
-              type="submit"
-              className="font-[family-name:var(--font-bebas)] text-sm tracking-[0.15em] uppercase px-7 py-3.5 bg-[#f7c12d] border-none text-[#070808] cursor-pointer transition-all duration-300 hover:bg-[#d4a520] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(247,193,45,0.25)]"
-            >
-              Notify Me
-            </button>
+          <p className="font-[family-name:var(--font-nunito)] text-xs sm:text-sm text-white/40 text-center mb-6">
+            Get exclusive updates and early access
+          </p>
+
+          <form onSubmit={handleSubmit} className="relative">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-0">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                required
+                className="input-glow flex-1 px-5 py-4 font-[family-name:var(--font-nunito)] text-sm bg-white/5 border border-[#f7c12d]/20 sm:border-r-0 sm:rounded-l-lg sm:rounded-r-none rounded-lg text-white placeholder:text-white/30 focus:bg-white/10 focus:border-[#f7c12d] transition-all duration-300"
+              />
+              <button
+                type="submit"
+                className="btn-golden font-[family-name:var(--font-bebas)] text-sm tracking-[0.2em] uppercase px-8 py-4 bg-[#f7c12d] sm:rounded-r-lg sm:rounded-l-none rounded-lg text-[#070808] cursor-pointer"
+              >
+                Notify Me
+              </button>
+            </div>
+            {submitted && (
+              <p className="absolute -bottom-8 left-0 right-0 font-[family-name:var(--font-nunito)] text-sm text-[#f7c12d] text-center animate-fade-in">
+                Thank you! You&apos;ll be the first to know.
+              </p>
+            )}
           </form>
-          {submitted && (
-            <p className="font-[family-name:var(--font-nunito)] text-sm text-[#f7c12d] mt-4 animate-fade-in">
-              Thank you. You&apos;ll be the first to know.
-            </p>
-          )}
         </div>
 
         {/* Footer / Partners */}
-        <footer className="animate-fade-in-up delay-600 text-center mt-auto">
-          <p className="font-[family-name:var(--font-bebas)] text-[11px] tracking-[0.35em] uppercase text-[#8a8a8a] mb-4">
+        <footer className="animate-fade-in-up delay-900 text-center mt-auto w-full">
+          <p className="font-[family-name:var(--font-bebas)] text-[10px] sm:text-xs tracking-[0.4em] uppercase text-white/30 mb-4 sm:mb-6">
             In Partnership With
           </p>
-          <div className="flex justify-center items-center gap-6 sm:gap-8 flex-wrap opacity-50 mb-8">
-            {partners.map((partner) => (
+
+          <div className="flex justify-center items-center gap-4 sm:gap-8 md:gap-12 flex-wrap mb-8 sm:mb-10 px-4">
+            {partners.map((partner, i) => (
               <span
                 key={partner.name}
-                className="font-[family-name:var(--font-nunito)] font-semibold text-[11px] tracking-[0.06em] text-white uppercase"
+                className="font-[family-name:var(--font-nunito)] font-medium text-[10px] sm:text-xs tracking-[0.05em] text-white/30 uppercase hover:text-[#f7c12d]/60 transition-colors duration-300 cursor-default"
               >
                 {partner.name}
               </span>
             ))}
           </div>
-          <p className="font-[family-name:var(--font-nunito)] font-light text-[11px] tracking-[0.12em] text-[#8a8a8a] py-5 border-t border-[#f7c12d]/10">
+
+          <div className="divider-glow mb-6" />
+
+          <p className="font-[family-name:var(--font-nunito)] font-light text-[10px] sm:text-xs tracking-[0.15em] text-white/20 pb-6">
             &copy; 2026 World Legends Cup. All Rights Reserved.
           </p>
         </footer>
+
+        {/* Decorative bottom line */}
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#f7c12d]/20 to-transparent" />
       </main>
     </>
   );
