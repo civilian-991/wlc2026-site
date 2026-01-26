@@ -143,22 +143,11 @@ function CountdownCard({
 
 export default function ComingSoon() {
   const timeLeft = useCountdown();
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setEmail("");
-      setTimeout(() => setSubmitted(false), 5000);
-    }
-  };
 
   return (
     <>
@@ -286,40 +275,36 @@ export default function ComingSoon() {
           ))}
         </div>
 
-        {/* Newsletter Section */}
+        {/* Invitation Only Badge */}
+        <div className="animate-fade-in-up delay-750 mb-[50px] sm:mb-[70px] md:mb-[90px]">
+          <div className="glass-card rounded-lg px-6 sm:px-8 py-4 sm:py-5 text-center border-[#f7c12d]/30">
+            <p className="font-[family-name:var(--font-bebas)] text-lg sm:text-xl md:text-2xl tracking-[0.2em] uppercase text-[#f7c12d]">
+              By Invitation Only
+            </p>
+          </div>
+        </div>
+
+        {/* Press Registration Section */}
         <div className="animate-fade-in-up delay-800 w-full max-w-lg mx-auto mb-[70px] sm:mb-[90px] md:mb-[120px] px-4">
           <div className="divider-glow mb-10" />
 
           <h3 className="font-[family-name:var(--font-bebas)] text-lg sm:text-xl md:text-2xl tracking-[0.3em] uppercase text-white text-center mb-3">
-            Be The First To Know
+            Press Registration
           </h3>
           <p className="font-[family-name:var(--font-bebas)] text-sm sm:text-base text-white/40 text-center mb-8">
-            Get exclusive updates and early access
+            Media accreditation for the Global Launch Event
           </p>
 
-          <form onSubmit={handleSubmit} className="relative">
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-0">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-                className="input-glow flex-1 px-5 py-4 font-[family-name:var(--font-bebas)] text-sm bg-white/5 border border-[#f7c12d]/20 sm:border-r-0 sm:rounded-l-lg sm:rounded-r-none rounded-lg text-white placeholder:text-white/30 focus:bg-white/10 focus:border-[#f7c12d] transition-all duration-300"
-              />
-              <button
-                type="submit"
-                className="btn-golden font-[family-name:var(--font-bebas)] text-sm tracking-[0.2em] uppercase px-8 py-4 bg-[#f7c12d] sm:rounded-r-lg sm:rounded-l-none rounded-lg text-[#070808] cursor-pointer"
-              >
-                Notify Me
-              </button>
-            </div>
-            {submitted && (
-              <p className="absolute -bottom-8 left-0 right-0 font-[family-name:var(--font-bebas)] text-sm text-[#f7c12d] text-center animate-fade-in">
-                Thank you! You&apos;ll be the first to know.
-              </p>
-            )}
-          </form>
+          <div className="text-center">
+            <a
+              href="https://docs.google.com/forms/d/1w0A7Xcwk48QfpJcq3FIlGun4kFuZIb7SxkwzzWtKFPA/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-golden inline-block font-[family-name:var(--font-bebas)] text-sm sm:text-base tracking-[0.2em] uppercase px-10 sm:px-12 py-4 sm:py-5 bg-[#f7c12d] rounded-lg text-[#070808] cursor-pointer"
+            >
+              Register Now
+            </a>
+          </div>
         </div>
 
         {/* Footer / Partners */}
