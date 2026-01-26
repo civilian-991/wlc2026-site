@@ -336,7 +336,7 @@ export default function ComingSoon() {
                 alt={partner.name}
                 width={200}
                 height={100}
-                className="h-[50px] sm:h-[70px] md:h-[90px] w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+                className="h-[65px] sm:h-[85px] md:h-[110px] w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
               />
             ))}
           </div>
