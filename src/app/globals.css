@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+/* WLC Brand Colors - from Brand Guidelines */
+:root {
+  --wlc-yellow: #f7c12d;
+  --wlc-yellow-dark: #d4a520;
+  --wlc-yellow-light: #fad561;
+  --wlc-black: #070808;
+  --wlc-black-light: #0d0d0e;
+  --wlc-white: #ffffff;
+  --wlc-gray: #8a8a8a;
+  --wlc-gray-dark: #2a2a2a;
+
+  --background: var(--wlc-black);
+  --foreground: var(--wlc-white);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-wlc-yellow: var(--wlc-yellow);
+  --color-wlc-yellow-dark: var(--wlc-yellow-dark);
+  --color-wlc-black: var(--wlc-black);
+  --font-display: var(--font-bebas);
+  --font-body: var(--font-nunito);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--wlc-black);
+  color: var(--wlc-white);
+  font-family: var(--font-nunito), -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Trophy-inspired geometric pattern */
+.bg-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23f7c12d' stroke-width='0.3'%3E%3Ccircle cx='60' cy='60' r='45'/%3E%3Ccircle cx='60' cy='60' r='25'/%3E%3Cpath d='M60 15 L60 105'/%3E%3Cpath d='M15 60 L105 60'/%3E%3Cpath d='M60 15 Q80 60 60 105 Q40 60 60 15'/%3E%3Cpath d='M25 25 L95 95'/%3E%3Cpath d='M95 25 L25 95'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  pointer-events: none;
+}
+
+/* Gradient overlay with golden glow */
+.bg-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 100% 60% at 50% 100%, rgba(247, 193, 45, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 10%, rgba(247, 193, 45, 0.05) 0%, transparent 40%),
+    radial-gradient(ellipse 40% 30% at 20% 80%, rgba(247, 193, 45, 0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 60px rgba(247, 193, 45, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 100px rgba(247, 193, 45, 0.5));
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+
+/* Gold shimmer effect */
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--wlc-yellow) 0%,
+    var(--wlc-yellow-light) 25%,
+    var(--wlc-yellow) 50%,
+    var(--wlc-yellow-light) 75%,
+    var(--wlc-yellow) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Focus states */
+input:focus {
+  outline: none;
+}
+
+/* Selection */
+::selection {
+  background: var(--wlc-yellow);
+  color: var(--wlc-black);
+}
