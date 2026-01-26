@@ -3,13 +3,16 @@
 import Image from "next/image";
 import { useState, useEffect, useMemo } from "react";
 
-// Partner logos from invitation
+// Global Partners
 const partners = [
-  { name: "Quality of Life Program" },
-  { name: "CUFA" },
-  { name: "Van Wagner" },
-  { name: "Prefeitura Rio" },
-  { name: "Globo" },
+  { name: "Rio de Janeiro", logo: "/images/partners/rio-de-janeiro.png" },
+  { name: "Golden Goal", logo: "/images/partners/golden-goal.png" },
+  { name: "Rio Prefeitura", logo: "/images/partners/rio-prefeitura.png" },
+  { name: "Promogates", logo: "/images/partners/promogates.png" },
+  { name: "WSC", logo: "/images/partners/wsc.png" },
+  { name: "Van Wagner", logo: "/images/partners/van-wagner.png" },
+  { name: "Partner", logo: "/images/partners/partner-7.png" },
+  { name: "Partner", logo: "/images/partners/partner-8.png" },
 ];
 
 // Countdown target: February 2, 2026 at 4:30 PM Rio time (UTC-3)
@@ -321,18 +324,20 @@ export default function ComingSoon() {
 
         {/* Footer / Partners */}
         <footer className="animate-fade-in-up delay-900 text-center mt-auto w-full pt-[80px] sm:pt-[120px]">
-          <p className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.4em] uppercase text-white/30 mb-6 sm:mb-8">
-            In Partnership With
+          <p className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.4em] uppercase text-white/30 mb-8 sm:mb-12">
+            Powered By Global Partners
           </p>
 
-          <div className="flex justify-center items-center gap-6 sm:gap-10 md:gap-14 flex-wrap mb-12 sm:mb-16 px-4">
+          <div className="flex justify-center items-center gap-8 sm:gap-12 md:gap-16 flex-wrap mb-12 sm:mb-16 px-4 max-w-5xl mx-auto">
             {partners.map((partner, i) => (
-              <span
-                key={partner.name}
-                className="font-[family-name:var(--font-bebas)] font-medium text-xs sm:text-sm tracking-[0.05em] text-white/30 uppercase hover:text-[#f7c12d]/60 transition-colors duration-300 cursor-default"
-              >
-                {partner.name}
-              </span>
+              <Image
+                key={i}
+                src={partner.logo}
+                alt={partner.name}
+                width={120}
+                height={60}
+                className="h-[30px] sm:h-[40px] md:h-[50px] w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
+              />
             ))}
           </div>
 
