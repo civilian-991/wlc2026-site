@@ -170,12 +170,12 @@ export default function ComingSoon() {
       {mounted && <FloatingParticles />}
       <div className="noise-overlay" />
 
-      <main className="relative z-10 flex flex-col items-center px-4 sm:px-6 py-[80px] sm:py-[120px] overflow-hidden">
+      <main className="relative z-10 flex flex-col items-center px-4 sm:px-6 py-[50px] sm:py-[80px] overflow-hidden">
         {/* Decorative top line */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#f7c12d]/30 to-transparent" />
 
         {/* Logo Section */}
-        <div className="animate-fade-in-scale text-center mb-[60px] sm:mb-[100px] md:mb-[140px] relative">
+        <div className="animate-fade-in-scale text-center mb-[40px] sm:mb-[60px] md:mb-[80px] relative">
           {/* Glow ring behind logo */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] rounded-full bg-gradient-radial from-[#f7c12d]/10 via-transparent to-transparent blur-3xl pointer-events-none" />
 
@@ -190,7 +190,7 @@ export default function ComingSoon() {
         </div>
 
         {/* Title Section */}
-        <div className="animate-fade-in-up delay-200 text-center mb-[80px] sm:mb-[120px] md:mb-[160px] max-w-3xl mx-auto">
+        <div className="animate-fade-in-up delay-200 text-center mb-[50px] sm:mb-[70px] md:mb-[90px] max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="w-8 sm:w-12 h-[1px] bg-gradient-to-r from-transparent to-[#f7c12d]" />
             <span className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.4em] uppercase text-[#f7c12d]">
@@ -210,7 +210,7 @@ export default function ComingSoon() {
         </div>
 
         {/* Countdown Section */}
-        <div className="w-full max-w-4xl mx-auto mb-[80px] sm:mb-[120px] md:mb-[160px]">
+        <div className="w-full max-w-4xl mx-auto mb-[50px] sm:mb-[70px] md:mb-[90px]">
           <p className="animate-fade-in-up delay-300 font-[family-name:var(--font-bebas)] text-sm sm:text-base tracking-[0.4em] uppercase text-[#f7c12d]/80 mb-8 sm:mb-10 text-center">
             Global Launch Event
           </p>
@@ -227,7 +227,7 @@ export default function ComingSoon() {
         </div>
 
         {/* Event Info Pills */}
-        <div className="animate-fade-in-up delay-700 flex flex-wrap justify-center items-center gap-4 sm:gap-6 mb-[100px] sm:mb-[140px] md:mb-[180px]">
+        <div className="animate-fade-in-up delay-700 flex flex-wrap justify-center items-center gap-4 sm:gap-6 mb-[60px] sm:mb-[80px] md:mb-[100px]">
           {[
             { icon: "location", text: "Rio de Janeiro" },
             { icon: "calendar", text: "February 2026" },
@@ -287,7 +287,7 @@ export default function ComingSoon() {
         </div>
 
         {/* Newsletter Section */}
-        <div className="animate-fade-in-up delay-800 w-full max-w-lg mx-auto mb-[120px] sm:mb-[160px] md:mb-[200px] px-4">
+        <div className="animate-fade-in-up delay-800 w-full max-w-lg mx-auto mb-[70px] sm:mb-[90px] md:mb-[120px] px-4">
           <div className="divider-glow mb-10" />
 
           <h3 className="font-[family-name:var(--font-bebas)] text-lg sm:text-xl md:text-2xl tracking-[0.3em] uppercase text-white text-center mb-3">
@@ -323,7 +323,7 @@ export default function ComingSoon() {
         </div>
 
         {/* Footer / Partners */}
-        <footer className="animate-fade-in-up delay-900 text-center mt-auto w-full pt-[80px] sm:pt-[120px]">
+        <footer className="animate-fade-in-up delay-900 text-center mt-auto w-full pt-[40px] sm:pt-[60px]">
           <p className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.4em] uppercase text-white/30 mb-8 sm:mb-12">
             Powered By Global Partners
           </p>
