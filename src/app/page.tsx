@@ -131,7 +131,7 @@ function CountdownCard({
       >
         {value.toString().padStart(2, "0")}
       </div>
-      <div className="font-[family-name:var(--font-nunito)] font-medium text-[10px] sm:text-xs md:text-sm tracking-[0.2em] uppercase text-white/40 mt-3 sm:mt-4">
+      <div className="font-[family-name:var(--font-bebas)] font-medium text-[10px] sm:text-xs md:text-sm tracking-[0.2em] uppercase text-white/40 mt-3 sm:mt-4">
         {label}
       </div>
     </div>
@@ -200,7 +200,7 @@ export default function ComingSoon() {
             The Legends <span className="gold-text">Return</span>
           </h1>
 
-          <p className="font-[family-name:var(--font-nunito)] font-light text-sm sm:text-base md:text-lg text-white/60 max-w-xl mx-auto leading-relaxed px-4">
+          <p className="font-[family-name:var(--font-bebas)] font-light text-sm sm:text-base md:text-lg text-white/60 max-w-xl mx-auto leading-relaxed px-4">
             The first-of-its-kind knockout tournament bringing together football
             legends from around the globe. Where legacy meets glory.
           </p>
@@ -290,7 +290,7 @@ export default function ComingSoon() {
           <h3 className="font-[family-name:var(--font-bebas)] text-lg sm:text-xl md:text-2xl tracking-[0.3em] uppercase text-white text-center mb-3">
             Be The First To Know
           </h3>
-          <p className="font-[family-name:var(--font-nunito)] text-sm sm:text-base text-white/40 text-center mb-8">
+          <p className="font-[family-name:var(--font-bebas)] text-sm sm:text-base text-white/40 text-center mb-8">
             Get exclusive updates and early access
           </p>
 
@@ -302,7 +302,7 @@ export default function ComingSoon() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 required
-                className="input-glow flex-1 px-5 py-4 font-[family-name:var(--font-nunito)] text-sm bg-white/5 border border-[#f7c12d]/20 sm:border-r-0 sm:rounded-l-lg sm:rounded-r-none rounded-lg text-white placeholder:text-white/30 focus:bg-white/10 focus:border-[#f7c12d] transition-all duration-300"
+                className="input-glow flex-1 px-5 py-4 font-[family-name:var(--font-bebas)] text-sm bg-white/5 border border-[#f7c12d]/20 sm:border-r-0 sm:rounded-l-lg sm:rounded-r-none rounded-lg text-white placeholder:text-white/30 focus:bg-white/10 focus:border-[#f7c12d] transition-all duration-300"
               />
               <button
                 type="submit"
@@ -312,7 +312,7 @@ export default function ComingSoon() {
               </button>
             </div>
             {submitted && (
-              <p className="absolute -bottom-8 left-0 right-0 font-[family-name:var(--font-nunito)] text-sm text-[#f7c12d] text-center animate-fade-in">
+              <p className="absolute -bottom-8 left-0 right-0 font-[family-name:var(--font-bebas)] text-sm text-[#f7c12d] text-center animate-fade-in">
                 Thank you! You&apos;ll be the first to know.
               </p>
             )}
@@ -329,7 +329,7 @@ export default function ComingSoon() {
             {partners.map((partner, i) => (
               <span
                 key={partner.name}
-                className="font-[family-name:var(--font-nunito)] font-medium text-xs sm:text-sm tracking-[0.05em] text-white/30 uppercase hover:text-[#f7c12d]/60 transition-colors duration-300 cursor-default"
+                className="font-[family-name:var(--font-bebas)] font-medium text-xs sm:text-sm tracking-[0.05em] text-white/30 uppercase hover:text-[#f7c12d]/60 transition-colors duration-300 cursor-default"
               >
                 {partner.name}
               </span>
@@ -338,7 +338,7 @@ export default function ComingSoon() {
 
           <div className="divider-glow mb-8" />
 
-          <p className="font-[family-name:var(--font-nunito)] font-light text-xs sm:text-sm tracking-[0.15em] text-white/20 pb-8 sm:pb-12">
+          <p className="font-[family-name:var(--font-bebas)] font-light text-xs sm:text-sm tracking-[0.15em] text-white/20 pb-8 sm:pb-12">
             &copy; 2026 World Legends Cup. All Rights Reserved.
           </p>
         </footer>

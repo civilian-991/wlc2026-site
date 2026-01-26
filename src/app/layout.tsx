@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Nunito_Sans } from "next/font/google";
+import { Bebas_Neue } from "next/font/google";
 import "./globals.css";
 
 // Primary Display Font - from WLC Brand Guidelines
@@ -8,14 +8,6 @@ const bebasNeue = Bebas_Neue({
   variable: "--font-bebas",
   subsets: ["latin"],
   display: "swap",
-});
-
-// Secondary Body Font - Avenir alternative for web
-const nunitoSans = Nunito_Sans({
-  variable: "--font-nunito",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -57,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${bebasNeue.variable} ${nunitoSans.variable} antialiased`}>
+      <body className={`${bebasNeue.variable} antialiased`}>
         {children}
       </body>
     </html>
