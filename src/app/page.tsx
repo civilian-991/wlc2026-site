@@ -334,9 +334,9 @@ export default function ComingSoon() {
                 key={i}
                 src={partner.logo}
                 alt={partner.name}
-                width={120}
-                height={60}
-                className="h-[30px] sm:h-[40px] md:h-[50px] w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
+                width={200}
+                height={100}
+                className="h-[50px] sm:h-[70px] md:h-[90px] w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
               />
             ))}
           </div>
