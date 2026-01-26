@@ -94,7 +94,7 @@ export default function ComingSoon() {
         {/* Logo */}
         <div className="animate-fade-in-up text-center mb-8 sm:mb-10">
           <Image
-            src="/images/wlc_logo_trimmed.png"
+            src="/images/wlc_logo_transparent.png"
             alt="World Legends Cup 2026"
             width={280}
             height={400}
