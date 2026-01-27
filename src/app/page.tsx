@@ -5,8 +5,11 @@ import { useState, useEffect, useMemo } from "react";
 
 // Global Partners
 const partners = [
+  { name: "Quality of Life Program", logo: "/images/partners/quality-of-life.png" },
+  { name: "CUFA", logo: "/images/partners/cufa.png" },
   { name: "Van Wagner", logo: "/images/partners/van-wagner.png" },
   { name: "Rio Prefeitura", logo: "/images/partners/rio-prefeitura.png" },
+  { name: "Globo", logo: "/images/partners/globo.png" },
 ];
 
 // Countdown target: February 2, 2026 at 4:30 PM Rio time (UTC-3)
