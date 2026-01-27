@@ -3,13 +3,13 @@
 import Image from "next/image";
 import { useState, useEffect, useMemo } from "react";
 
-// Global Partners
+// Global Partners with individual sizing for visual consistency
 const partners = [
-  { name: "Quality of Life Program", logo: "/images/partners/quality-of-life.png" },
-  { name: "CUFA", logo: "/images/partners/cufa.png" },
-  { name: "Van Wagner", logo: "/images/partners/van-wagner.png" },
-  { name: "Rio Prefeitura", logo: "/images/partners/rio-prefeitura.png" },
-  { name: "Globo", logo: "/images/partners/globo.png" },
+  { name: "Quality of Life Program", logo: "/images/partners/quality-of-life.png", height: "h-[30px] sm:h-[36px] md:h-[42px]" },
+  { name: "CUFA", logo: "/images/partners/cufa.png", height: "h-[24px] sm:h-[28px] md:h-[32px]" },
+  { name: "Van Wagner", logo: "/images/partners/van-wagner.png", height: "h-[28px] sm:h-[34px] md:h-[40px]" },
+  { name: "Rio Prefeitura", logo: "/images/partners/rio-prefeitura.png", height: "h-[36px] sm:h-[42px] md:h-[50px]" },
+  { name: "Globo", logo: "/images/partners/globo.png", height: "h-[36px] sm:h-[42px] md:h-[50px]" },
 ];
 
 // Countdown target: February 2, 2026 at 4:30 PM Rio time (UTC-3)
@@ -318,7 +318,7 @@ export default function ComingSoon() {
                 alt={partner.name}
                 width={200}
                 height={100}
-                className="h-[40px] sm:h-[50px] md:h-[60px] w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+                className={`${partner.height} w-auto opacity-80 hover:opacity-100 transition-opacity duration-300`}
               />
             ))}
           </div>
