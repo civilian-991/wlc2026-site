@@ -5,14 +5,8 @@ import { useState, useEffect, useMemo } from "react";
 
 // Global Partners
 const partners = [
-  { name: "Rio de Janeiro", logo: "/images/partners/rio-de-janeiro.png" },
-  { name: "Golden Goal", logo: "/images/partners/golden-goal.png" },
-  { name: "Rio Prefeitura", logo: "/images/partners/rio-prefeitura.png" },
-  { name: "Promogates", logo: "/images/partners/promogates.png" },
-  { name: "WSC", logo: "/images/partners/wsc.png" },
   { name: "Van Wagner", logo: "/images/partners/van-wagner.png" },
-  { name: "Partner", logo: "/images/partners/partner-7.png" },
-  { name: "Partner", logo: "/images/partners/partner-8.png" },
+  { name: "Rio Prefeitura", logo: "/images/partners/rio-prefeitura.png" },
 ];
 
 // Countdown target: February 2, 2026 at 4:30 PM Rio time (UTC-3)
@@ -169,11 +163,11 @@ export default function ComingSoon() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] md:w-[250px] md:h-[250px] rounded-full bg-gradient-radial from-[#f7c12d]/10 via-transparent to-transparent blur-3xl pointer-events-none" />
 
           <Image
-            src="/images/wlc_logo_official.png"
+            src="/images/wlc_logo_new.png"
             alt="World Legends Cup 2026"
-            width={220}
-            height={275}
-            className="w-[120px] sm:w-[160px] md:w-[200px] lg:w-[220px] h-auto animate-pulse-glow relative z-10"
+            width={342}
+            height={866}
+            className="w-[100px] sm:w-[130px] md:w-[160px] lg:w-[180px] h-auto animate-pulse-glow relative z-10"
             priority
           />
         </div>

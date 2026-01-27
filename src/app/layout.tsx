@@ -37,8 +37,8 @@ export const metadata: Metadata = {
       "The first-of-its-kind knockout tournament bringing together football legends from around the globe.",
   },
   icons: {
-    icon: "/images/wlc_trophy_icon.png",
-    apple: "/images/wlc_trophy_icon.png",
+    icon: "/images/wlc_favicon.png",
+    apple: "/images/wlc_favicon.png",
   },
 };
 
