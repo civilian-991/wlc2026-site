@@ -166,14 +166,14 @@ export default function ComingSoon() {
         {/* Logo Section */}
         <div className="animate-fade-in-scale text-center mb-[40px] sm:mb-[60px] md:mb-[80px] relative">
           {/* Glow ring behind logo */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] rounded-full bg-gradient-radial from-[#f7c12d]/10 via-transparent to-transparent blur-3xl pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[350px] md:h-[350px] rounded-full bg-gradient-radial from-[#f7c12d]/10 via-transparent to-transparent blur-3xl pointer-events-none" />
 
           <Image
             src="/images/wlc_logo_official.png"
             alt="World Legends Cup 2026"
-            width={400}
-            height={500}
-            className="w-[200px] sm:w-[280px] md:w-[340px] lg:w-[400px] h-auto animate-pulse-glow relative z-10"
+            width={300}
+            height={375}
+            className="w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px] h-auto animate-pulse-glow relative z-10"
             priority
           />
         </div>
