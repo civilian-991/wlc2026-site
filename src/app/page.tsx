@@ -159,27 +159,27 @@ export default function ComingSoon() {
       {mounted && <FloatingParticles />}
       <div className="noise-overlay" />
 
-      <main className="relative z-10 flex flex-col items-center px-4 sm:px-6 py-[50px] sm:py-[80px] overflow-hidden">
+      <main className="relative z-10 flex flex-col items-center px-4 sm:px-6 py-[30px] sm:py-[50px] overflow-hidden">
         {/* Decorative top line */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#f7c12d]/30 to-transparent" />
 
         {/* Logo Section */}
-        <div className="animate-fade-in-scale text-center mb-[40px] sm:mb-[60px] md:mb-[80px] relative">
+        <div className="animate-fade-in-scale text-center mb-[25px] sm:mb-[35px] md:mb-[45px] relative">
           {/* Glow ring behind logo */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[350px] md:h-[350px] rounded-full bg-gradient-radial from-[#f7c12d]/10 via-transparent to-transparent blur-3xl pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] md:w-[250px] md:h-[250px] rounded-full bg-gradient-radial from-[#f7c12d]/10 via-transparent to-transparent blur-3xl pointer-events-none" />
 
           <Image
             src="/images/wlc_logo_official.png"
             alt="World Legends Cup 2026"
-            width={300}
-            height={375}
-            className="w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px] h-auto animate-pulse-glow relative z-10"
+            width={220}
+            height={275}
+            className="w-[120px] sm:w-[160px] md:w-[200px] lg:w-[220px] h-auto animate-pulse-glow relative z-10"
             priority
           />
         </div>
 
         {/* Title Section */}
-        <div className="animate-fade-in-up delay-200 text-center mb-[50px] sm:mb-[70px] md:mb-[90px] max-w-3xl mx-auto">
+        <div className="animate-fade-in-up delay-200 text-center mb-[30px] sm:mb-[40px] md:mb-[50px] max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="w-8 sm:w-12 h-[1px] bg-gradient-to-r from-transparent to-[#f7c12d]" />
             <span className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.4em] uppercase text-[#f7c12d]">
@@ -199,7 +199,7 @@ export default function ComingSoon() {
         </div>
 
         {/* Countdown Section */}
-        <div className="w-full max-w-4xl mx-auto mb-[50px] sm:mb-[70px] md:mb-[90px]">
+        <div className="w-full max-w-4xl mx-auto mb-[30px] sm:mb-[40px] md:mb-[50px]">
           <p className="animate-fade-in-up delay-300 font-[family-name:var(--font-bebas)] text-sm sm:text-base tracking-[0.4em] uppercase text-[#f7c12d]/80 mb-8 sm:mb-10 text-center">
             Global Launch Event
           </p>
@@ -216,7 +216,7 @@ export default function ComingSoon() {
         </div>
 
         {/* Event Info Pills */}
-        <div className="animate-fade-in-up delay-700 flex flex-wrap justify-center items-center gap-4 sm:gap-6 mb-[60px] sm:mb-[80px] md:mb-[100px]">
+        <div className="animate-fade-in-up delay-700 flex flex-wrap justify-center items-center gap-4 sm:gap-6 mb-[30px] sm:mb-[40px] md:mb-[50px]">
           {[
             { icon: "location", text: "Rio de Janeiro" },
             { icon: "calendar", text: "February 2026" },
@@ -276,7 +276,7 @@ export default function ComingSoon() {
         </div>
 
         {/* Invitation Only Badge */}
-        <div className="animate-fade-in-up delay-750 mb-[50px] sm:mb-[70px] md:mb-[90px]">
+        <div className="animate-fade-in-up delay-750 mb-[30px] sm:mb-[40px] md:mb-[50px]">
           <div className="glass-card rounded-lg px-6 sm:px-8 py-4 sm:py-5 text-center border-[#f7c12d]/30">
             <p className="font-[family-name:var(--font-bebas)] text-lg sm:text-xl md:text-2xl tracking-[0.2em] uppercase text-[#f7c12d]">
               By Invitation Only
@@ -285,7 +285,7 @@ export default function ComingSoon() {
         </div>
 
         {/* Press Registration Section */}
-        <div className="animate-fade-in-up delay-800 w-full max-w-lg mx-auto mb-[70px] sm:mb-[90px] md:mb-[120px] px-4">
+        <div className="animate-fade-in-up delay-800 w-full max-w-lg mx-auto mb-[40px] sm:mb-[50px] md:mb-[60px] px-4">
           <div className="divider-glow mb-10" />
 
           <h3 className="font-[family-name:var(--font-bebas)] text-lg sm:text-xl md:text-2xl tracking-[0.3em] uppercase text-white text-center mb-3">
@@ -308,7 +308,7 @@ export default function ComingSoon() {
         </div>
 
         {/* Footer / Partners */}
-        <footer className="animate-fade-in-up delay-900 text-center mt-auto w-full pt-[40px] sm:pt-[60px]">
+        <footer className="animate-fade-in-up delay-900 text-center mt-auto w-full pt-[20px] sm:pt-[30px]">
           <p className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.4em] uppercase text-white/30 mb-8 sm:mb-12">
             Powered By Global Partners
           </p>
