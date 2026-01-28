@@ -146,6 +146,34 @@ export default function ComingSoon() {
           </p>
         </div>
 
+        {/* Rio de Janeiro Section */}
+        <div className="animate-fade-in-up delay-300 w-full max-w-4xl mx-auto mb-[50px] sm:mb-[60px] px-6">
+          <div className="glass-card rounded-xl p-6 sm:p-8 md:p-10 text-center relative overflow-hidden">
+            {/* Decorative corner */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#f7c12d]/10 to-transparent pointer-events-none" />
+
+            <div className="inline-flex items-center gap-3 mb-5">
+              <svg className="w-5 h-5 text-[#f7c12d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span className="font-[family-name:var(--font-bebas)] text-sm sm:text-base tracking-[0.3em] uppercase text-[#f7c12d]">
+                Rio de Janeiro, Brazil
+              </span>
+            </div>
+
+            <p className="font-[family-name:var(--font-bebas)] font-light text-sm sm:text-base md:text-lg text-white/60 leading-relaxed max-w-3xl mx-auto">
+              Rio de Janeiro&apos;s football scenery is a vibrant mix of legendary, massive arenas and intimate,
+              community-based pitches nestled within its iconic landscape. The city is defined by its deep,
+              almost religious, passion for the sport, with major historic clubs like{" "}
+              <span className="text-white/80">Flamengo</span>,{" "}
+              <span className="text-white/80">Fluminense</span>,{" "}
+              <span className="text-white/80">Botafogo</span>, and{" "}
+              <span className="text-white/80">Vasco da Gama</span> calling it home.
+            </p>
+          </div>
+        </div>
+
         {/* Legends Section - Cinematic Marquee */}
         <div className="animate-fade-in-up delay-400 w-full mb-[50px] sm:mb-[70px] overflow-hidden">
           <div className="flex items-center justify-center gap-4 sm:gap-6 mb-8 sm:mb-10 px-8">
