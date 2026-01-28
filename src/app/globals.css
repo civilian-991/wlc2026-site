@@ -449,6 +449,25 @@ body {
     0 0 20px rgba(247, 193, 45, 0.2);
 }
 
+/* Legends marquee animation */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.legends-marquee {
+  animation: marquee-scroll 40s linear infinite;
+  width: max-content;
+}
+
+.legends-marquee:hover {
+  animation-play-state: paused;
+}
+
 /* Partner logo containers */
 .partner-logo-container {
   box-shadow:

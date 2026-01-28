@@ -146,9 +146,9 @@ export default function ComingSoon() {
           </p>
         </div>
 
-        {/* Legends Section */}
-        <div className="animate-fade-in-up delay-400 w-full max-w-5xl mx-auto mb-[50px] sm:mb-[70px]">
-          <div className="flex items-center justify-center gap-4 sm:gap-6 mb-10 sm:mb-12 px-8">
+        {/* Legends Section - Cinematic Marquee */}
+        <div className="animate-fade-in-up delay-400 w-full mb-[50px] sm:mb-[70px] overflow-hidden">
+          <div className="flex items-center justify-center gap-4 sm:gap-6 mb-8 sm:mb-10 px-8">
             <div className="h-[1px] w-12 sm:w-20 bg-gradient-to-r from-transparent to-[#f7c12d]/40" />
             <p className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.5em] uppercase text-[#f7c12d]/70">
               The Legends
@@ -156,33 +156,60 @@ export default function ComingSoon() {
             <div className="h-[1px] w-12 sm:w-20 bg-gradient-to-l from-transparent to-[#f7c12d]/40" />
           </div>
 
-          <div className="flex justify-center items-end flex-wrap gap-4 sm:gap-6 md:gap-8 px-4">
-            {legends.map((legend, i) => (
-              <div
-                key={legend.name}
-                className="group relative flex flex-col items-center"
-                style={{ animationDelay: `${i * 100}ms` }}
-              >
-                {/* Legend image container */}
-                <div className="relative w-[80px] sm:w-[100px] md:w-[120px] lg:w-[140px] h-[100px] sm:h-[130px] md:h-[160px] lg:h-[180px] overflow-hidden rounded-t-full">
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#070808] via-transparent to-transparent z-10 pointer-events-none" />
+          {/* Marquee container with fade edges */}
+          <div className="relative">
+            {/* Left fade */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#030303] to-transparent z-20 pointer-events-none" />
+            {/* Right fade */}
+            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#030303] to-transparent z-20 pointer-events-none" />
 
-                  <Image
-                    src={legend.image}
-                    alt={legend.name}
-                    width={200}
-                    height={250}
-                    className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                  />
+            {/* Scrolling marquee */}
+            <div className="legends-marquee flex gap-6 sm:gap-8 py-4">
+              {/* Double the legends for seamless loop */}
+              {[...legends, ...legends].map((legend, i) => (
+                <div
+                  key={`${legend.name}-${i}`}
+                  className="group relative flex-shrink-0 cursor-pointer"
+                >
+                  {/* Card container */}
+                  <div className="relative w-[140px] sm:w-[160px] md:w-[180px] h-[200px] sm:h-[230px] md:h-[260px] overflow-hidden rounded-sm">
+                    {/* Golden frame border */}
+                    <div className="absolute inset-0 rounded-sm border border-[#f7c12d]/20 group-hover:border-[#f7c12d]/60 transition-all duration-500 z-20 pointer-events-none" />
+
+                    {/* Corner accents */}
+                    <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-[#f7c12d]/40 group-hover:border-[#f7c12d] transition-all duration-500 z-20" />
+                    <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-[#f7c12d]/40 group-hover:border-[#f7c12d] transition-all duration-500 z-20" />
+                    <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-[#f7c12d]/40 group-hover:border-[#f7c12d] transition-all duration-500 z-20" />
+                    <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-[#f7c12d]/40 group-hover:border-[#f7c12d] transition-all duration-500 z-20" />
+
+                    {/* Gradient overlays */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#070808] via-[#070808]/30 to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#070808]/50 via-transparent to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    {/* Golden glow on hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(247,193,45,0.15)_0%,_transparent_70%)]" />
+
+                    {/* Player image */}
+                    <Image
+                      src={legend.image}
+                      alt={legend.name}
+                      width={200}
+                      height={280}
+                      className="w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-110"
+                    />
+
+                    {/* Name plate */}
+                    <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 z-20">
+                      <div className="bg-[#070808]/80 backdrop-blur-sm border-t border-[#f7c12d]/30 group-hover:border-[#f7c12d]/60 transition-all duration-500 px-3 py-2">
+                        <p className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.2em] uppercase text-white/90 group-hover:text-[#f7c12d] transition-colors duration-500 text-center truncate">
+                          {legend.name}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-
-                {/* Legend name */}
-                <p className="font-[family-name:var(--font-bebas)] text-[10px] sm:text-xs tracking-[0.15em] uppercase text-white/40 group-hover:text-[#f7c12d]/80 transition-colors duration-500 mt-2 text-center">
-                  {legend.name}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
