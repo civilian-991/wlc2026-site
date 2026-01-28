@@ -21,6 +21,14 @@ const legends = [
   { name: "Cafu", image: "/images/legends/cafu.png" },
   { name: "Rivaldo", image: "/images/legends/rivaldo.png" },
   { name: "Ruud Gullit", image: "/images/legends/ruud-gullit.png" },
+  { name: "Arjen Robben", image: "/images/legends/arjen-robben.png" },
+  { name: "Edgar Davids", image: "/images/legends/edgar-davids.png" },
+  { name: "Nwankwo Kanu", image: "/images/legends/kanu.png" },
+  { name: "Christian Karembeu", image: "/images/legends/karembeu.png" },
+  { name: "Marcel Desailly", image: "/images/legends/marcel-desailly.png" },
+  { name: "Christian Panucci", image: "/images/legends/panucci.png" },
+  { name: "Clarence Seedorf", image: "/images/legends/seedorf.png" },
+  { name: "Yasser Al-Qahtani", image: "/images/legends/yasser-al-qahtani.png" },
 ];
 
 // Animated stars background
