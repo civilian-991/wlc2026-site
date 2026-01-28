@@ -449,6 +449,20 @@ body {
     0 0 20px rgba(247, 193, 45, 0.2);
 }
 
+/* Partner logo containers */
+.partner-logo-container {
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.partner-logo-container:hover {
+  box-shadow:
+    0 4px 20px rgba(247, 193, 45, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
 /* Divider line with glow */
 .divider-glow {
   position: relative;

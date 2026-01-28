@@ -3,13 +3,13 @@
 import Image from "next/image";
 import { useState, useEffect, useMemo } from "react";
 
-// Global Partners with individual sizing for visual consistency
+// Global Partners
 const partners = [
-  { name: "Quality of Life Program", logo: "/images/partners/quality-of-life.png", height: "h-[30px] sm:h-[36px] md:h-[42px]" },
-  { name: "CUFA", logo: "/images/partners/cufa.png", height: "h-[24px] sm:h-[28px] md:h-[32px]" },
-  { name: "Van Wagner", logo: "/images/partners/van-wagner.png", height: "h-[28px] sm:h-[34px] md:h-[40px]" },
-  { name: "Rio Prefeitura", logo: "/images/partners/rio-prefeitura.png", height: "h-[36px] sm:h-[42px] md:h-[50px]" },
-  { name: "Globo", logo: "/images/partners/globo.png", height: "h-[36px] sm:h-[42px] md:h-[50px]" },
+  { name: "Quality of Life Program", logo: "/images/partners/quality-of-life.png" },
+  { name: "CUFA", logo: "/images/partners/cufa.png" },
+  { name: "Van Wagner", logo: "/images/partners/van-wagner.png" },
+  { name: "Rio Prefeitura", logo: "/images/partners/rio-prefeitura.png" },
+  { name: "Globo", logo: "/images/partners/globo.png" },
 ];
 
 // Countdown target: February 2, 2026 at 4:30 PM Rio time (UTC-3)
@@ -305,27 +305,40 @@ export default function ComingSoon() {
         </div>
 
         {/* Footer / Partners */}
-        <footer className="animate-fade-in-up delay-900 text-center mt-auto w-full pt-[20px] sm:pt-[30px]">
-          <p className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.4em] uppercase text-white/30 mb-8 sm:mb-12">
-            Powered By Global Partners
-          </p>
+        <footer className="animate-fade-in-up delay-900 text-center mt-auto w-full pt-[30px] sm:pt-[40px]">
+          {/* Section header with decorative lines */}
+          <div className="flex items-center justify-center gap-4 sm:gap-6 mb-10 sm:mb-14 px-8">
+            <div className="h-[1px] w-12 sm:w-20 bg-gradient-to-r from-transparent to-[#f7c12d]/40" />
+            <p className="font-[family-name:var(--font-bebas)] text-[10px] sm:text-xs tracking-[0.5em] uppercase text-[#f7c12d]/60">
+              Global Partners
+            </p>
+            <div className="h-[1px] w-12 sm:w-20 bg-gradient-to-l from-transparent to-[#f7c12d]/40" />
+          </div>
 
-          <div className="flex justify-center items-center gap-8 sm:gap-12 md:gap-16 flex-wrap mb-12 sm:mb-16 px-4 max-w-5xl mx-auto">
+          {/* Partner logos grid with uniform containers */}
+          <div className="flex justify-center items-center flex-wrap gap-6 sm:gap-8 md:gap-10 mb-14 sm:mb-18 px-6 max-w-4xl mx-auto">
             {partners.map((partner, i) => (
-              <Image
+              <div
                 key={i}
-                src={partner.logo}
-                alt={partner.name}
-                width={200}
-                height={100}
-                className={`${partner.height} w-auto opacity-80 hover:opacity-100 transition-opacity duration-300`}
-              />
+                className="partner-logo-container group relative flex items-center justify-center w-[100px] sm:w-[120px] md:w-[140px] h-[50px] sm:h-[60px] md:h-[70px] rounded-lg bg-white/[0.03] border border-white/[0.06] backdrop-blur-sm transition-all duration-500 hover:bg-white/[0.06] hover:border-[#f7c12d]/20 hover:scale-105"
+              >
+                {/* Subtle glow on hover */}
+                <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-b from-[#f7c12d]/5 to-transparent pointer-events-none" />
+
+                <Image
+                  src={partner.logo}
+                  alt={partner.name}
+                  width={140}
+                  height={70}
+                  className="max-w-[80%] max-h-[70%] w-auto h-auto object-contain opacity-70 group-hover:opacity-100 transition-all duration-500 brightness-100 group-hover:brightness-110"
+                />
+              </div>
             ))}
           </div>
 
           <div className="divider-glow mb-8" />
 
-          <p className="font-[family-name:var(--font-bebas)] font-light text-xs sm:text-sm tracking-[0.15em] text-white/20 pb-8 sm:pb-12">
+          <p className="font-[family-name:var(--font-bebas)] font-light text-[10px] sm:text-xs tracking-[0.2em] text-white/25 pb-8 sm:pb-12">
             &copy; 2026 World Legends Cup. All Rights Reserved.
           </p>
         </footer>
