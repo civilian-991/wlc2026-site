@@ -540,3 +540,106 @@ input:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--wlc-yellow-dark);
 }
+
+/* Rio de Janeiro Bento Grid */
+.rio-bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .rio-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rio-bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 280px 280px;
+    gap: 24px;
+  }
+
+  /* Large card - Maracanã (spans 2 columns, 2 rows) */
+  .rio-card-large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  /* Tall card - Cristo (spans 1 column, 2 rows) */
+  .rio-card-tall {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  /* Medium card - standard size */
+  .rio-card-medium {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  /* Wide card - spans 2 columns */
+  .rio-card-wide {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+/* Mobile/Tablet specific heights */
+.rio-card {
+  min-height: 220px;
+  animation: rio-card-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@media (min-width: 640px) {
+  .rio-card {
+    min-height: 260px;
+  }
+
+  .rio-card-large,
+  .rio-card-tall {
+    min-height: 340px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rio-card {
+    min-height: unset;
+    height: 100%;
+  }
+}
+
+@keyframes rio-card-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Rio card inner glow on hover */
+.rio-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  box-shadow:
+    inset 0 0 60px rgba(247, 193, 45, 0.1),
+    inset 0 0 120px rgba(247, 193, 45, 0.05);
+  pointer-events: none;
+}
+
+.rio-card:hover::after {
+  opacity: 1;
+}

@@ -3,6 +3,45 @@
 import Image from "next/image";
 import { useState, useEffect, useMemo } from "react";
 
+// Rio de Janeiro Landmarks
+const rioLandmarks = [
+  {
+    id: "maracana",
+    name: "Maracanã Stadium",
+    subtitle: "The Temple of Football",
+    image: "/images/rio/maracana.jpg",
+    size: "large",
+  },
+  {
+    id: "cristo",
+    name: "Cristo Redentor",
+    subtitle: "Christ the Redeemer",
+    image: "/images/rio/cristo-redentor.jpg",
+    size: "tall",
+  },
+  {
+    id: "sugarloaf",
+    name: "Pão de Açúcar",
+    subtitle: "Sugarloaf Mountain",
+    image: "/images/rio/sugarloaf.jpg",
+    size: "medium",
+  },
+  {
+    id: "copacabana",
+    name: "Copacabana",
+    subtitle: "The Princess of the Sea",
+    image: "/images/rio/copacabana.jpg",
+    size: "wide",
+  },
+  {
+    id: "skyline",
+    name: "Rio de Janeiro",
+    subtitle: "Cidade Maravilhosa",
+    image: "/images/rio/skyline.jpg",
+    size: "medium",
+  },
+];
+
 // Global Partners
 const partners = [
   { name: "Quality of Life Program", logo: "/images/partners/quality-of-life.png" },
@@ -146,47 +185,89 @@ export default function ComingSoon() {
           </p>
         </div>
 
-        {/* Rio de Janeiro Section */}
-        <div className="animate-fade-in-up delay-300 w-full max-w-4xl mx-auto mb-[50px] sm:mb-[60px] px-6">
-          <div className="glass-card rounded-xl p-6 sm:p-8 md:p-10 text-center relative overflow-hidden">
-            {/* Rio skyline background */}
-            <div
-              className="absolute inset-0 pointer-events-none opacity-80"
-              style={{
-                backgroundImage: "url('/images/rio-skyline.svg')",
-                backgroundPosition: 'bottom center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: '110% auto',
-              }}
-            />
-
-            {/* Decorative corners */}
-            <div className="absolute top-0 left-0 w-16 h-16 border-t border-l border-[#f7c12d]/20 rounded-tl-xl pointer-events-none" />
-            <div className="absolute top-0 right-0 w-16 h-16 border-t border-r border-[#f7c12d]/20 rounded-tr-xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-16 h-16 border-b border-l border-[#f7c12d]/20 rounded-bl-xl pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-16 h-16 border-b border-r border-[#f7c12d]/20 rounded-br-xl pointer-events-none" />
-
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-3 mb-5">
-                <svg className="w-5 h-5 text-[#f7c12d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-                <span className="font-[family-name:var(--font-bebas)] text-sm sm:text-base tracking-[0.3em] uppercase text-[#f7c12d]">
-                  Rio de Janeiro, Brazil
-                </span>
-              </div>
-
-              <p className="font-[family-name:var(--font-bebas)] font-light text-sm sm:text-base md:text-lg text-white/60 leading-relaxed max-w-3xl mx-auto mb-6">
-                Rio de Janeiro&apos;s football scenery is a vibrant mix of legendary, massive arenas and intimate,
-                community-based pitches nestled within its iconic landscape. The city is defined by its deep,
-                almost religious, passion for the sport, with major historic clubs like{" "}
-                <span className="text-white/80">Flamengo</span>,{" "}
-                <span className="text-white/80">Fluminense</span>,{" "}
-                <span className="text-white/80">Botafogo</span>, and{" "}
-                <span className="text-white/80">Vasco da Gama</span> calling it home.
-              </p>
+        {/* Rio de Janeiro Section - The Stage */}
+        <div className="animate-fade-in-up delay-300 w-full max-w-7xl mx-auto mb-[60px] sm:mb-[80px] px-4 sm:px-6">
+          {/* Section Header */}
+          <div className="text-center mb-10 sm:mb-14">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <svg className="w-5 h-5 text-[#f7c12d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span className="font-[family-name:var(--font-bebas)] text-sm sm:text-base tracking-[0.3em] uppercase text-[#f7c12d]">
+                Rio de Janeiro, Brazil
+              </span>
             </div>
+            <h2 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl md:text-5xl tracking-[0.08em] uppercase text-white mb-4">
+              The <span className="gold-text">Stage</span> Awaits
+            </h2>
+            <p className="font-[family-name:var(--font-bebas)] font-light text-sm sm:text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+              Where legends will write new chapters in the Cidade Maravilhosa
+            </p>
+          </div>
+
+          {/* Bento Grid Gallery */}
+          <div className="rio-bento-grid">
+            {rioLandmarks.map((landmark, index) => (
+              <div
+                key={landmark.id}
+                className={`rio-card rio-card-${landmark.size} group relative overflow-hidden rounded-lg cursor-pointer`}
+                style={{ animationDelay: `${0.1 * index}s` }}
+              >
+                {/* Image */}
+                <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110">
+                  <Image
+                    src={landmark.image}
+                    alt={landmark.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
+
+                {/* Gradient Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#f7c12d]/0 via-transparent to-[#f7c12d]/0 group-hover:from-[#f7c12d]/10 group-hover:to-[#f7c12d]/5 transition-all duration-700" />
+
+                {/* Golden Border Frame */}
+                <div className="absolute inset-0 rounded-lg border border-white/10 group-hover:border-[#f7c12d]/40 transition-all duration-500" />
+
+                {/* Corner Accents */}
+                <div className="absolute top-0 left-0 w-8 h-8 sm:w-12 sm:h-12 border-t-2 border-l-2 border-[#f7c12d]/30 group-hover:border-[#f7c12d]/80 rounded-tl-lg transition-all duration-500 group-hover:w-10 group-hover:h-10 sm:group-hover:w-16 sm:group-hover:h-16" />
+                <div className="absolute top-0 right-0 w-8 h-8 sm:w-12 sm:h-12 border-t-2 border-r-2 border-[#f7c12d]/30 group-hover:border-[#f7c12d]/80 rounded-tr-lg transition-all duration-500 group-hover:w-10 group-hover:h-10 sm:group-hover:w-16 sm:group-hover:h-16" />
+                <div className="absolute bottom-0 left-0 w-8 h-8 sm:w-12 sm:h-12 border-b-2 border-l-2 border-[#f7c12d]/30 group-hover:border-[#f7c12d]/80 rounded-bl-lg transition-all duration-500 group-hover:w-10 group-hover:h-10 sm:group-hover:w-16 sm:group-hover:h-16" />
+                <div className="absolute bottom-0 right-0 w-8 h-8 sm:w-12 sm:h-12 border-b-2 border-r-2 border-[#f7c12d]/30 group-hover:border-[#f7c12d]/80 rounded-br-lg transition-all duration-500 group-hover:w-10 group-hover:h-10 sm:group-hover:w-16 sm:group-hover:h-16" />
+
+                {/* Shimmer Effect on Hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+                </div>
+
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                  <p className="font-[family-name:var(--font-bebas)] text-[10px] sm:text-xs tracking-[0.3em] uppercase text-[#f7c12d]/80 mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    {landmark.subtitle}
+                  </p>
+                  <h3 className="font-[family-name:var(--font-bebas)] text-lg sm:text-xl md:text-2xl tracking-[0.1em] uppercase text-white group-hover:text-[#f7c12d] transition-colors duration-500">
+                    {landmark.name}
+                  </h3>
+                </div>
+
+                {/* Floating Icon Indicator */}
+                <div className="absolute top-4 right-4 sm:top-6 sm:right-6 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/50 backdrop-blur-sm border border-[#f7c12d]/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-500">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#f7c12d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                  </svg>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom Text */}
+          <div className="text-center mt-10 sm:mt-14">
+            <p className="font-[family-name:var(--font-bebas)] font-light text-xs sm:text-sm text-white/40 max-w-xl mx-auto leading-relaxed">
+              Home to <span className="text-white/60">Flamengo</span>, <span className="text-white/60">Fluminense</span>, <span className="text-white/60">Botafogo</span> & <span className="text-white/60">Vasco da Gama</span> — where football is religion
+            </p>
           </div>
         </div>
 
