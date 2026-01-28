@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" fill="#f7c12d">
+  <!-- Sugarloaf Mountain -->
+  <path d="M50 200 Q80 120 120 140 Q160 100 180 200 Z" opacity="0.2"/>
+
+  <!-- Hills -->
+  <path d="M150 200 Q200 160 250 180 Q300 140 350 200 Z" opacity="0.15"/>
+  <path d="M300 200 Q350 150 400 170 Q450 130 500 200 Z" opacity="0.18"/>
+
+  <!-- Christ the Redeemer Mountain -->
+  <path d="M480 200 Q520 100 560 80 Q600 100 640 200 Z" opacity="0.2"/>
+
+  <!-- Christ the Redeemer Statue -->
+  <g transform="translate(545, 45)" opacity="0.4">
+    <!-- Head -->
+    <ellipse cx="15" cy="5" rx="5" ry="6"/>
+    <!-- Body -->
+    <rect x="12" y="10" width="6" height="25" rx="1"/>
+    <!-- Arms -->
+    <rect x="-15" y="12" width="60" height="4" rx="2"/>
+    <!-- Base -->
+    <rect x="8" y="35" width="14" height="5" rx="1"/>
+  </g>
+
+  <!-- More hills -->
+  <path d="M620 200 Q680 150 720 170 Q760 140 800 200 Z" opacity="0.15"/>
+
+  <!-- Small hill left -->
+  <path d="M0 200 Q30 170 60 200 Z" opacity="0.12"/>
+
+  <!-- Ocean waves hint -->
+  <path d="M0 200 Q100 190 200 195 Q300 188 400 195 Q500 188 600 195 Q700 190 800 200 L800 200 L0 200 Z" opacity="0.08"/>
+</svg>
