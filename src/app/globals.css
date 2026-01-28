@@ -541,6 +541,43 @@ input:focus {
   background: var(--wlc-yellow-dark);
 }
 
+/* Rio Section Container */
+.rio-section {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(247, 193, 45, 0.02) 20%,
+    rgba(247, 193, 45, 0.03) 50%,
+    rgba(247, 193, 45, 0.02) 80%,
+    transparent 100%
+  );
+}
+
+.rio-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--wlc-yellow), transparent);
+  opacity: 0.3;
+}
+
+.rio-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to top, transparent, var(--wlc-yellow), transparent);
+  opacity: 0.3;
+}
+
 /* Rio de Janeiro Bento Grid */
 .rio-bento-grid {
   display: grid;
@@ -560,8 +597,8 @@ input:focus {
 @media (min-width: 1024px) {
   .rio-bento-grid {
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 280px 280px;
-    gap: 24px;
+    grid-template-rows: 300px 300px;
+    gap: 20px;
   }
 
   /* Large card - Maracanã (spans 2 columns, 2 rows) */
@@ -591,20 +628,21 @@ input:focus {
 
 /* Mobile/Tablet specific heights */
 .rio-card {
-  min-height: 220px;
-  animation: rio-card-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  min-height: 240px;
+  animation: rio-card-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(40px) scale(0.98);
+  transform-origin: center bottom;
 }
 
 @media (min-width: 640px) {
   .rio-card {
-    min-height: 260px;
+    min-height: 280px;
   }
 
   .rio-card-large,
   .rio-card-tall {
-    min-height: 340px;
+    min-height: 380px;
   }
 }
 
@@ -618,12 +656,28 @@ input:focus {
 @keyframes rio-card-reveal {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
+}
+
+/* Rio card dramatic glow effect */
+.rio-card {
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    0 8px 40px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rio-card:hover {
+  box-shadow:
+    0 8px 40px rgba(247, 193, 45, 0.15),
+    0 16px 80px rgba(247, 193, 45, 0.1),
+    0 4px 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
 }
 
 /* Rio card inner glow on hover */
@@ -633,13 +687,28 @@ input:focus {
   inset: 0;
   border-radius: inherit;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.7s ease;
   box-shadow:
-    inset 0 0 60px rgba(247, 193, 45, 0.1),
-    inset 0 0 120px rgba(247, 193, 45, 0.05);
+    inset 0 0 80px rgba(247, 193, 45, 0.15),
+    inset 0 0 160px rgba(247, 193, 45, 0.08);
   pointer-events: none;
+  z-index: 5;
 }
 
 .rio-card:hover::after {
   opacity: 1;
+}
+
+/* Special styles for large Maracana card */
+.rio-card-large {
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.5),
+    0 16px 60px rgba(0, 0, 0, 0.3);
+}
+
+.rio-card-large:hover {
+  box-shadow:
+    0 12px 60px rgba(247, 193, 45, 0.2),
+    0 24px 100px rgba(247, 193, 45, 0.15),
+    0 8px 30px rgba(0, 0, 0, 0.4);
 }

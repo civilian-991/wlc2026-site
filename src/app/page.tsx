@@ -186,88 +186,203 @@ export default function ComingSoon() {
         </div>
 
         {/* Rio de Janeiro Section - The Stage */}
-        <div className="animate-fade-in-up delay-300 w-full max-w-7xl mx-auto mb-[60px] sm:mb-[80px] px-4 sm:px-6">
-          {/* Section Header */}
-          <div className="text-center mb-10 sm:mb-14">
-            <div className="inline-flex items-center gap-3 mb-4">
-              <svg className="w-5 h-5 text-[#f7c12d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              <span className="font-[family-name:var(--font-bebas)] text-sm sm:text-base tracking-[0.3em] uppercase text-[#f7c12d]">
-                Rio de Janeiro, Brazil
-              </span>
-            </div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl md:text-5xl tracking-[0.08em] uppercase text-white mb-4">
-              The <span className="gold-text">Stage</span> Awaits
-            </h2>
-            <p className="font-[family-name:var(--font-bebas)] font-light text-sm sm:text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
-              Where legends will write new chapters in the Cidade Maravilhosa
-            </p>
+        <div className="rio-section animate-fade-in-up delay-300 w-full mb-[60px] sm:mb-[80px] relative overflow-hidden">
+          {/* Cinematic Atmospheric Background */}
+          <div className="absolute inset-0 pointer-events-none">
+            {/* Top fog/glow */}
+            <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#f7c12d]/5 via-[#f7c12d]/2 to-transparent" />
+            {/* Bottom fog */}
+            <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#f7c12d]/5 via-[#f7c12d]/2 to-transparent" />
+            {/* Side vignettes */}
+            <div className="absolute inset-y-0 left-0 w-32 sm:w-48 bg-gradient-to-r from-[#030303] to-transparent" />
+            <div className="absolute inset-y-0 right-0 w-32 sm:w-48 bg-gradient-to-l from-[#030303] to-transparent" />
+            {/* Central spotlight */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[radial-gradient(ellipse_at_center,_rgba(247,193,45,0.08)_0%,_transparent_70%)]" />
           </div>
 
-          {/* Bento Grid Gallery */}
-          <div className="rio-bento-grid">
-            {rioLandmarks.map((landmark, index) => (
-              <div
-                key={landmark.id}
-                className={`rio-card rio-card-${landmark.size} group relative overflow-hidden rounded-lg cursor-pointer`}
-                style={{ animationDelay: `${0.1 * index}s` }}
-              >
-                {/* Image */}
-                <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110">
-                  <Image
-                    src={landmark.image}
-                    alt={landmark.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                </div>
+          {/* Decorative Frame Around Section */}
+          <div className="absolute top-4 left-4 sm:top-8 sm:left-8 w-20 h-20 sm:w-32 sm:h-32 pointer-events-none">
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-[#f7c12d]/60 to-transparent" />
+            <div className="absolute top-0 left-0 h-full w-[1px] bg-gradient-to-b from-[#f7c12d]/60 to-transparent" />
+            <div className="absolute top-2 left-2 w-2 h-2 bg-[#f7c12d]/40 rounded-full" />
+          </div>
+          <div className="absolute top-4 right-4 sm:top-8 sm:right-8 w-20 h-20 sm:w-32 sm:h-32 pointer-events-none">
+            <div className="absolute top-0 right-0 w-full h-[1px] bg-gradient-to-l from-[#f7c12d]/60 to-transparent" />
+            <div className="absolute top-0 right-0 h-full w-[1px] bg-gradient-to-b from-[#f7c12d]/60 to-transparent" />
+            <div className="absolute top-2 right-2 w-2 h-2 bg-[#f7c12d]/40 rounded-full" />
+          </div>
+          <div className="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 w-20 h-20 sm:w-32 sm:h-32 pointer-events-none">
+            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-[#f7c12d]/60 to-transparent" />
+            <div className="absolute bottom-0 left-0 h-full w-[1px] bg-gradient-to-t from-[#f7c12d]/60 to-transparent" />
+            <div className="absolute bottom-2 left-2 w-2 h-2 bg-[#f7c12d]/40 rounded-full" />
+          </div>
+          <div className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 w-20 h-20 sm:w-32 sm:h-32 pointer-events-none">
+            <div className="absolute bottom-0 right-0 w-full h-[1px] bg-gradient-to-l from-[#f7c12d]/60 to-transparent" />
+            <div className="absolute bottom-0 right-0 h-full w-[1px] bg-gradient-to-t from-[#f7c12d]/60 to-transparent" />
+            <div className="absolute bottom-2 right-2 w-2 h-2 bg-[#f7c12d]/40 rounded-full" />
+          </div>
 
-                {/* Gradient Overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20 transition-opacity duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#f7c12d]/0 via-transparent to-[#f7c12d]/0 group-hover:from-[#f7c12d]/10 group-hover:to-[#f7c12d]/5 transition-all duration-700" />
-
-                {/* Golden Border Frame */}
-                <div className="absolute inset-0 rounded-lg border border-white/10 group-hover:border-[#f7c12d]/40 transition-all duration-500" />
-
-                {/* Corner Accents */}
-                <div className="absolute top-0 left-0 w-8 h-8 sm:w-12 sm:h-12 border-t-2 border-l-2 border-[#f7c12d]/30 group-hover:border-[#f7c12d]/80 rounded-tl-lg transition-all duration-500 group-hover:w-10 group-hover:h-10 sm:group-hover:w-16 sm:group-hover:h-16" />
-                <div className="absolute top-0 right-0 w-8 h-8 sm:w-12 sm:h-12 border-t-2 border-r-2 border-[#f7c12d]/30 group-hover:border-[#f7c12d]/80 rounded-tr-lg transition-all duration-500 group-hover:w-10 group-hover:h-10 sm:group-hover:w-16 sm:group-hover:h-16" />
-                <div className="absolute bottom-0 left-0 w-8 h-8 sm:w-12 sm:h-12 border-b-2 border-l-2 border-[#f7c12d]/30 group-hover:border-[#f7c12d]/80 rounded-bl-lg transition-all duration-500 group-hover:w-10 group-hover:h-10 sm:group-hover:w-16 sm:group-hover:h-16" />
-                <div className="absolute bottom-0 right-0 w-8 h-8 sm:w-12 sm:h-12 border-b-2 border-r-2 border-[#f7c12d]/30 group-hover:border-[#f7c12d]/80 rounded-br-lg transition-all duration-500 group-hover:w-10 group-hover:h-10 sm:group-hover:w-16 sm:group-hover:h-16" />
-
-                {/* Shimmer Effect on Hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
-                </div>
-
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                  <p className="font-[family-name:var(--font-bebas)] text-[10px] sm:text-xs tracking-[0.3em] uppercase text-[#f7c12d]/80 mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                    {landmark.subtitle}
-                  </p>
-                  <h3 className="font-[family-name:var(--font-bebas)] text-lg sm:text-xl md:text-2xl tracking-[0.1em] uppercase text-white group-hover:text-[#f7c12d] transition-colors duration-500">
-                    {landmark.name}
-                  </h3>
-                </div>
-
-                {/* Floating Icon Indicator */}
-                <div className="absolute top-4 right-4 sm:top-6 sm:right-6 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/50 backdrop-blur-sm border border-[#f7c12d]/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-500">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#f7c12d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                  </svg>
-                </div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+            {/* Section Header - Enhanced */}
+            <div className="text-center mb-12 sm:mb-16">
+              {/* Decorative top element */}
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="h-[1px] w-8 sm:w-16 bg-gradient-to-r from-transparent to-[#f7c12d]/50" />
+                <div className="w-1.5 h-1.5 bg-[#f7c12d] rounded-full animate-pulse" />
+                <div className="h-[1px] w-8 sm:w-16 bg-gradient-to-l from-transparent to-[#f7c12d]/50" />
               </div>
-            ))}
-          </div>
 
-          {/* Bottom Text */}
-          <div className="text-center mt-10 sm:mt-14">
-            <p className="font-[family-name:var(--font-bebas)] font-light text-xs sm:text-sm text-white/40 max-w-xl mx-auto leading-relaxed">
-              Home to <span className="text-white/60">Flamengo</span>, <span className="text-white/60">Fluminense</span>, <span className="text-white/60">Botafogo</span> & <span className="text-white/60">Vasco da Gama</span> — where football is religion
-            </p>
+              <div className="inline-flex items-center gap-3 mb-5 px-6 py-2 rounded-full border border-[#f7c12d]/20 bg-[#f7c12d]/5 backdrop-blur-sm">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#f7c12d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.3em] uppercase text-[#f7c12d]">
+                  Rio de Janeiro, Brazil
+                </span>
+              </div>
+
+              <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.08em] uppercase text-white mb-5 leading-none">
+                The <span className="gold-text">Stage</span> Awaits
+              </h2>
+
+              <p className="font-[family-name:var(--font-bebas)] font-light text-base sm:text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed mb-6">
+                Where legends will write new chapters in the Cidade Maravilhosa
+              </p>
+
+              {/* Decorative divider */}
+              <div className="flex items-center justify-center gap-3">
+                <div className="h-[1px] w-12 sm:w-24 bg-gradient-to-r from-transparent via-[#f7c12d]/30 to-[#f7c12d]/50" />
+                <svg className="w-6 h-6 text-[#f7c12d]/50" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2Z" />
+                </svg>
+                <div className="h-[1px] w-12 sm:w-24 bg-gradient-to-l from-transparent via-[#f7c12d]/30 to-[#f7c12d]/50" />
+              </div>
+            </div>
+
+            {/* Bento Grid Gallery - Enhanced */}
+            <div className="rio-bento-grid">
+              {rioLandmarks.map((landmark, index) => (
+                <div
+                  key={landmark.id}
+                  className={`rio-card rio-card-${landmark.size} group relative overflow-hidden rounded-lg cursor-pointer`}
+                  style={{ animationDelay: `${0.15 * index}s` }}
+                >
+                  {/* Image with Ken Burns effect */}
+                  <div className="absolute inset-0 transition-transform duration-[2000ms] ease-out group-hover:scale-110">
+                    <Image
+                      src={landmark.image}
+                      alt={landmark.name}
+                      fill
+                      className="object-cover transition-all duration-700"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+
+                  {/* Film grain texture overlay */}
+                  <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E')]" />
+
+                  {/* Cinematic gradient overlays */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/30 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#f7c12d]/0 to-[#f7c12d]/0 group-hover:from-[#f7c12d]/15 group-hover:to-transparent transition-all duration-700" />
+
+                  {/* Vignette effect */}
+                  <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] group-hover:shadow-[inset_0_0_80px_rgba(0,0,0,0.3)] transition-all duration-700 pointer-events-none" />
+
+                  {/* Animated border glow */}
+                  <div className="absolute inset-0 rounded-lg border-2 border-white/5 group-hover:border-[#f7c12d]/50 transition-all duration-500 group-hover:shadow-[inset_0_0_30px_rgba(247,193,45,0.1)]" />
+
+                  {/* Ornate corner accents */}
+                  <div className="absolute top-0 left-0 w-12 h-12 sm:w-16 sm:h-16 pointer-events-none">
+                    <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#f7c12d]/50 group-hover:from-[#f7c12d] to-transparent transition-all duration-500" />
+                    <div className="absolute top-0 left-0 h-full w-[2px] bg-gradient-to-b from-[#f7c12d]/50 group-hover:from-[#f7c12d] to-transparent transition-all duration-500" />
+                    <div className="absolute top-1 left-1 w-2 h-2 border-t border-l border-[#f7c12d]/30 group-hover:border-[#f7c12d]/80 transition-all duration-500" />
+                  </div>
+                  <div className="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 pointer-events-none">
+                    <div className="absolute top-0 right-0 w-full h-[2px] bg-gradient-to-l from-[#f7c12d]/50 group-hover:from-[#f7c12d] to-transparent transition-all duration-500" />
+                    <div className="absolute top-0 right-0 h-full w-[2px] bg-gradient-to-b from-[#f7c12d]/50 group-hover:from-[#f7c12d] to-transparent transition-all duration-500" />
+                    <div className="absolute top-1 right-1 w-2 h-2 border-t border-r border-[#f7c12d]/30 group-hover:border-[#f7c12d]/80 transition-all duration-500" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 w-12 h-12 sm:w-16 sm:h-16 pointer-events-none">
+                    <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#f7c12d]/50 group-hover:from-[#f7c12d] to-transparent transition-all duration-500" />
+                    <div className="absolute bottom-0 left-0 h-full w-[2px] bg-gradient-to-t from-[#f7c12d]/50 group-hover:from-[#f7c12d] to-transparent transition-all duration-500" />
+                    <div className="absolute bottom-1 left-1 w-2 h-2 border-b border-l border-[#f7c12d]/30 group-hover:border-[#f7c12d]/80 transition-all duration-500" />
+                  </div>
+                  <div className="absolute bottom-0 right-0 w-12 h-12 sm:w-16 sm:h-16 pointer-events-none">
+                    <div className="absolute bottom-0 right-0 w-full h-[2px] bg-gradient-to-l from-[#f7c12d]/50 group-hover:from-[#f7c12d] to-transparent transition-all duration-500" />
+                    <div className="absolute bottom-0 right-0 h-full w-[2px] bg-gradient-to-t from-[#f7c12d]/50 group-hover:from-[#f7c12d] to-transparent transition-all duration-500" />
+                    <div className="absolute bottom-1 right-1 w-2 h-2 border-b border-r border-[#f7c12d]/30 group-hover:border-[#f7c12d]/80 transition-all duration-500" />
+                  </div>
+
+                  {/* Animated light sweep */}
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+                  </div>
+
+                  {/* Content - Enhanced */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
+                    {/* Content backdrop */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    <div className="relative transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      {/* Subtitle line */}
+                      <div className="flex items-center gap-2 mb-2 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                        <div className="h-[1px] w-6 bg-[#f7c12d]/60" />
+                        <p className="font-[family-name:var(--font-bebas)] text-[10px] sm:text-xs tracking-[0.3em] uppercase text-[#f7c12d]">
+                          {landmark.subtitle}
+                        </p>
+                      </div>
+
+                      {/* Main title */}
+                      <h3 className="font-[family-name:var(--font-bebas)] text-xl sm:text-2xl md:text-3xl tracking-[0.1em] uppercase text-white group-hover:text-[#f7c12d] transition-colors duration-500 drop-shadow-lg">
+                        {landmark.name}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Top badge/indicator */}
+                  <div className="absolute top-4 left-4 sm:top-6 sm:left-6 opacity-0 group-hover:opacity-100 transform -translate-y-2 group-hover:translate-y-0 transition-all duration-500 delay-150">
+                    <div className="px-3 py-1 rounded-full bg-[#f7c12d]/10 backdrop-blur-md border border-[#f7c12d]/30">
+                      <span className="font-[family-name:var(--font-bebas)] text-[10px] tracking-[0.2em] uppercase text-[#f7c12d]">
+                        Landmark
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Expand icon - refined */}
+                  <div className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 backdrop-blur-md border border-[#f7c12d]/20 group-hover:border-[#f7c12d]/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-500 group-hover:bg-[#f7c12d]/10">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#f7c12d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                    </svg>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom Section - Enhanced */}
+            <div className="text-center mt-14 sm:mt-20">
+              {/* Decorative element */}
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="h-[1px] w-16 sm:w-32 bg-gradient-to-r from-transparent to-[#f7c12d]/30" />
+                <div className="flex gap-1">
+                  <div className="w-1 h-1 bg-[#f7c12d]/40 rounded-full" />
+                  <div className="w-1 h-1 bg-[#f7c12d]/60 rounded-full" />
+                  <div className="w-1 h-1 bg-[#f7c12d]/40 rounded-full" />
+                </div>
+                <div className="h-[1px] w-16 sm:w-32 bg-gradient-to-l from-transparent to-[#f7c12d]/30" />
+              </div>
+
+              <p className="font-[family-name:var(--font-bebas)] font-light text-sm sm:text-base text-white/40 max-w-2xl mx-auto leading-relaxed">
+                Home to{" "}
+                <span className="text-[#f7c12d]/70">Flamengo</span>,{" "}
+                <span className="text-[#f7c12d]/70">Fluminense</span>,{" "}
+                <span className="text-[#f7c12d]/70">Botafogo</span> &{" "}
+                <span className="text-[#f7c12d]/70">Vasco da Gama</span>
+              </p>
+              <p className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.3em] uppercase text-white/25 mt-3">
+                Where football is religion
+              </p>
+            </div>
           </div>
         </div>
 
