@@ -10,6 +10,7 @@ const partners = [
   { name: "Van Wagner", logo: "/images/partners/van-wagner.png" },
   { name: "Rio Prefeitura", logo: "/images/partners/rio-prefeitura.png" },
   { name: "Globo", logo: "/images/partners/globo.png" },
+  { name: "Estado", logo: "/images/partners/estado.png" },
 ];
 
 // Countdown target: February 2, 2026 at 4:30 PM Rio time (UTC-3)
