@@ -3,41 +3,46 @@
 import Image from "next/image";
 import { useState, useEffect, useMemo } from "react";
 
-// Rio de Janeiro Landmarks
+// Rio de Janeiro Football Landmarks
 const rioLandmarks = [
   {
     id: "maracana",
-    name: "Maracanã Stadium",
+    name: "Maracanã",
     subtitle: "The Temple of Football",
+    description: "The legendary stadium that hosted two World Cup finals. Home to Flamengo and Fluminense, where 200,000 fans once witnessed football history.",
     image: "/images/rio/maracana.jpg",
     size: "large",
   },
   {
-    id: "cristo",
-    name: "Cristo Redentor",
-    subtitle: "Christ the Redeemer",
-    image: "/images/rio/cristo-redentor.jpg",
+    id: "engenhao",
+    name: "Estádio Nilton Santos",
+    subtitle: "Home of Botafogo",
+    description: "Also known as Engenhão, this modern 46,000-seat arena hosted Olympic football and is the proud home of Botafogo.",
+    image: "/images/rio/engenhao.jpg",
     size: "tall",
   },
   {
-    id: "sugarloaf",
-    name: "Pão de Açúcar",
-    subtitle: "Sugarloaf Mountain",
-    image: "/images/rio/sugarloaf.jpg",
+    id: "sao-januario",
+    name: "São Januário",
+    subtitle: "Vasco da Gama's Fortress",
+    description: "Historic 21,000-seat stadium in the heart of Rio. Vasco da Gama's home since 1927, a symbol of Brazilian football heritage.",
+    image: "/images/rio/sao-januario.jpg",
     size: "medium",
   },
   {
-    id: "copacabana",
-    name: "Copacabana",
-    subtitle: "The Princess of the Sea",
-    image: "/images/rio/copacabana.jpg",
+    id: "beach-football",
+    name: "Praia Football",
+    subtitle: "Where Legends Are Born",
+    description: "The beaches of Rio are the birthplace of Brazilian flair. From Copacabana to Ipanema, future stars learn the beautiful game barefoot on sand.",
+    image: "/images/rio/beach-football.jpg",
     size: "wide",
   },
   {
-    id: "skyline",
-    name: "Rio de Janeiro",
-    subtitle: "Cidade Maravilhosa",
-    image: "/images/rio/skyline.jpg",
+    id: "flamengo",
+    name: "Ninho do Urubu",
+    subtitle: "Flamengo Training Center",
+    description: "The Vulture's Nest - Flamengo's state-of-the-art training complex where Brazil's most popular club forges champions.",
+    image: "/images/rio/flamengo-training.jpg",
     size: "medium",
   },
 ];
@@ -139,10 +144,37 @@ function FloatingParticles() {
 
 export default function ComingSoon() {
   const [mounted, setMounted] = useState(false);
+  const [lightbox, setLightbox] = useState<{
+    isOpen: boolean;
+    landmark: typeof rioLandmarks[0] | null;
+  }>({ isOpen: false, landmark: null });
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Close lightbox on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightbox({ isOpen: false, landmark: null });
+    };
+    if (lightbox.isOpen) {
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
+    };
+  }, [lightbox.isOpen]);
+
+  const openLightbox = (landmark: typeof rioLandmarks[0]) => {
+    setLightbox({ isOpen: true, landmark });
+  };
+
+  const closeLightbox = () => {
+    setLightbox({ isOpen: false, landmark: null });
+  };
 
   return (
     <>
@@ -349,12 +381,19 @@ export default function ComingSoon() {
                     </div>
                   </div>
 
-                  {/* Expand icon - refined */}
-                  <div className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 backdrop-blur-md border border-[#f7c12d]/20 group-hover:border-[#f7c12d]/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-500 group-hover:bg-[#f7c12d]/10">
+                  {/* Expand icon - clickable */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openLightbox(landmark);
+                    }}
+                    className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 backdrop-blur-md border border-[#f7c12d]/20 group-hover:border-[#f7c12d]/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-500 group-hover:bg-[#f7c12d]/10 hover:!bg-[#f7c12d]/30 hover:!border-[#f7c12d] cursor-pointer z-30"
+                    aria-label={`View ${landmark.name}`}
+                  >
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#f7c12d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
                     </svg>
-                  </div>
+                  </button>
                 </div>
               ))}
             </div>
@@ -495,6 +534,98 @@ export default function ComingSoon() {
         {/* Decorative bottom line */}
         <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#f7c12d]/20 to-transparent" />
       </main>
+
+      {/* Lightbox Modal */}
+      {lightbox.isOpen && lightbox.landmark && (
+        <div
+          className="fixed inset-0 z-[200] flex items-center justify-center"
+          onClick={closeLightbox}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/95 backdrop-blur-md animate-fade-in" />
+
+          {/* Close button */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-6 right-6 sm:top-8 sm:right-8 w-12 h-12 rounded-full bg-white/5 border border-white/10 hover:border-[#f7c12d]/50 hover:bg-[#f7c12d]/10 flex items-center justify-center transition-all duration-300 z-10 group"
+            aria-label="Close"
+          >
+            <svg className="w-6 h-6 text-white/70 group-hover:text-[#f7c12d] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Modal Content */}
+          <div
+            className="relative w-[95vw] max-w-6xl max-h-[90vh] flex flex-col lg:flex-row gap-6 lg:gap-8 p-4 sm:p-6 animate-lightbox-enter"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Image Container */}
+            <div className="relative flex-1 min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] rounded-xl overflow-hidden">
+              {/* Image */}
+              <Image
+                src={lightbox.landmark.image}
+                alt={lightbox.landmark.name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 95vw, 60vw"
+                priority
+              />
+
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
+
+              {/* Golden frame */}
+              <div className="absolute inset-0 rounded-xl border-2 border-[#f7c12d]/30 pointer-events-none" />
+
+              {/* Corner accents */}
+              <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#f7c12d] rounded-tl-xl" />
+              <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[#f7c12d] rounded-tr-xl" />
+              <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[#f7c12d] rounded-bl-xl" />
+              <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#f7c12d] rounded-br-xl" />
+            </div>
+
+            {/* Info Panel */}
+            <div className="lg:w-[340px] flex flex-col justify-center">
+              {/* Subtitle */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-[2px] w-8 bg-[#f7c12d]" />
+                <p className="font-[family-name:var(--font-bebas)] text-xs sm:text-sm tracking-[0.3em] uppercase text-[#f7c12d]">
+                  {lightbox.landmark.subtitle}
+                </p>
+              </div>
+
+              {/* Title */}
+              <h2 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl lg:text-5xl tracking-[0.08em] uppercase text-white mb-6 leading-tight">
+                {lightbox.landmark.name}
+              </h2>
+
+              {/* Description */}
+              <p className="font-[family-name:var(--font-bebas)] font-light text-base sm:text-lg text-white/60 leading-relaxed mb-8">
+                {lightbox.landmark.description}
+              </p>
+
+              {/* Decorative element */}
+              <div className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-[#f7c12d]/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span className="font-[family-name:var(--font-bebas)] text-sm tracking-[0.2em] uppercase text-white/40">
+                  Rio de Janeiro, Brazil
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation hint */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 text-white/30">
+            <span className="font-[family-name:var(--font-bebas)] text-xs tracking-[0.2em] uppercase">
+              Press ESC to close
+            </span>
+          </div>
+        </div>
+      )}
     </>
   );
 }
